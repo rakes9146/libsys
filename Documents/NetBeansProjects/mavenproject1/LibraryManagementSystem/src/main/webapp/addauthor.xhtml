@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <h:form id="form">
+            <div class="container_div1">
+
+                <b:container>
+                    <h1>Add New Author here</h1>
+                    <b:row>
+                        <b:inputText label="Name" render-label="true" required="true"
+                                     required-message="Please Enter your name" maxlength="40"
+                                     large-screen="one-third" id="author_name" update="msg1"
+                                     ajax="true" value="#{authorDetails.base1.name}" />
+                        <b:message id="msg1" for="author_name" span="4" />
+                    </b:row>
+                    <b:row>
+                        <b:inputTextarea label="Address" render-label="true" id="address"
+                                         maxlength="200" required="true"
+                                         required-message="Please Enter your address"
+                                         large-screen="one-third" update="msg2" ajax="true"
+                                         value="#{authorDetails.base1.adddress}"
+                                         />
+                        <b:message id="msg2" for="address" span="4"  />
+                    </b:row>
+                    <b:row>
+                        <b:inputText label="Phone" id="phone" maxlength="10"
+                                     required="true" required-message="Please Enter your mobile number"
+                                     large-screen="one-third" update="msg3" ajax="true" 
+                                     value="#{authorDetails.base1.phone}"
+                                     />
+                        <b:message for="phone" id="msg3" span="4" />
+                    </b:row>
+                    <b:row>
+                        <b:inputText label="Fax" render-label="true" id="fax"
+                                     large-screen="one-third" span="4" value="#{authorDetails.base1.fax}" />
+                        <b:message for="fax" />
+                    </b:row>
+                    <b:row>
+                        <b:inputText label="Email" type="email" id="p_email"
+                                     required="true" required-message="Please Enter your Email Address"
+                                     large-screen="one-third" update="msg4" ajax="true" 
+                                     value="#{authorDetails.base1.email}"
+                                     />
+                        <b:message id="msg4" for="p_email" span="4" />
+                    </b:row>
+                    <b:row>
+                        <b:commandButton type="submit" value="submit" size="nm" span="1"
+                                         class="btn1" process="@form" update="@form" rendered="true"
+                                         onclick="ajax:authorDetails.save()" />
+                        <b:commandButton type="reset" value="Reset" size="nm" span="1"
+                                         class="btn2" />
+                    </b:row>
+
+                    <b:row>
+                        <b:alert severity="success"  id="author_alert">
+                            <h:outputText id="success_message" value="#{author.msg}"></h:outputText>
+                        </b:alert>
+                    </b:row>
+                </b:container>
+
+            </div>
+
+
+
+        </h:form>
+
+    </h:body>
+</html>
+

@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <div class="container_div1">
+            <b:container>
+                <h1>User Registration Here</h1>
+                <h:form>
+                    <b:row>
+                        <b:inputText label="First Name" render-label="true" id="fname"
+                                     maxlength="20" large-screen="one-third" required="true"
+                                     required-message="Please Enter your name" ajax="true" 
+                                     update="msg1" />
+                        <b:message id="msg1" for="fname" span="4" />
+                    </b:row>
+                    <b:row>
+                        <b:inputText label="Middle Name" render-label="true" id="mname"
+                                     maxlength="20" large-screen="one-third" required="true"
+                                     required-message="Please Enter Your Middle Name" ajax="true"
+                                     update="msg2" />
+                        <b:message id="msg2" for="mname" span="4" />
+                    </b:row>
+                    <b:row>
+                        <b:inputText label="Last Name" render-label="true" id="sname"
+                                     maxlength="20" large-screen="one-third" required="true"
+                                     required-message="Please Enter Your Last Name" ajax="true"
+                                     update="msg3" />
+                        <b:message id="msg3" for="sname" span="4" />
+                    </b:row>
+                    <b:row>
+                        <b:dateTimePicker render-label="true" label="Date" id="dob"
+                                          large-screen="one-third" allow-input-toggle="true" 
+                                          show-date="false" side-by-side="true" />
+                        <b:message for="dob" />
+                    </b:row>
+                    <b:row>
+                        <b:inputTextarea label="Local Address" rows="5"
+                                         large-screen="one-third" id="laddress" required="true"
+                                         required-message="Please Enter Your Address" ajax="true"
+                                         update="msg5" />
+                        <b:message id="msg5" for="laddress" span="4"/>
+                    </b:row>
+                    <b:row>
+                        <b:inputText type="text" label="Mobile Number" renderLabel="true"
+                                     maxlength="10" id="mobno" large-screen="one-third" required="true"
+                                     required-message="Please Enter Your Mobile Number" ajax="true"
+                                     update="msg5" />
+                    </b:row>
+                    <b:row>
+                        <b:inputText type="email" label="Email" render-label="true"
+                                     maxlength="30" id="email" large-screen="one-third" required="true"
+                                     required-message="Please Enter your Email Id" ajax="true"
+                                     update="msg6" />
+                        <b:message id="msg6" for="email" span="4" />
+                    </b:row>
+                    <b:row>
+                        <b:commandButton type="submit" value="Register" class="btn1"
+                                         span="1" size="nm" process="@form" update="@form" />
+                        <b:commandButton type="reset" value="Reset" class="btn2" span="1"
+                                         size="nm" />
+                    </b:row>
+                    <b:row>
+                        <b:alert>
+                            <h:outputText></h:outputText>
+                        </b:alert>
+                    </b:row>`
+                </h:form>
+            </b:container>
+        </div>
+    </h:body>
+</html>
+

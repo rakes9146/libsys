@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      >
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <div>
+            <h:form>
+                <b:container>
+                    <b:row>
+                        <b:inputText id="book_title" label="Book Title" render-label="true"
+                                     required="true" required-message="Please Enter book title"
+                                     ajax="true" update="msg1" large-screen="one-third" />
+                        <b:message id="msg1" for="book_title" span="4" />
+                    </b:row>
+
+                    <b:row>
+                        <b:selectMultiMenu id="author_name" label="Author"
+                                           render-label="true" required="true" large-screen="one-third"
+                                           required-message="Please Select Author" ajax="true" update="msg2"
+                                           radiobuttons="true" filter-placeholder="Enter Author Name"
+                                           enable-filtering="true" />
+                        <b:message id="msg2" for="author_name" span="4" />
+                    </b:row>
+
+                    <b:row>
+                        <b:selectMultiMenu id="publisher_name" label="Publisher"
+                                           render-label="true" required="true" large-screen="one-third"
+                                           required-message="Please Select Publisher" ajax="true"
+                                           update="msg2" radiobuttons="true"
+                                           filter-placeholder="Enter Publisher Name" enable-filtering="true" />
+                        <b:message id="msg3" for="publisher_name" span="4" />
+                    </b:row>
+
+                    <b:row>
+                        <b:selectMultiMenu id="supplier_name" label="Supplier"
+                                           render-label="true" required="true" large-screen="one-third"
+                                           required-message="Please Select Supplier" ajax="true"
+                                           update="msg4" radiobuttons="true"
+                                           filter-placeholder="Enter Supplier Name" enable-filtering="true" />
+                        <b:message id="msg4" for="author_name" span="4" />
+                    </b:row>
+
+                    <b:row>
+                        <b:selectMultiMenu id="category_name" label="Category"
+                                           render-label="true" required="true" large-screen="one-third"
+                                           required-message="Please Select Category" ajax="true"
+                                           update="msg5" radiobuttons="true"
+                                           filter-placeholder="Enter Category Name" enable-filtering="true" />
+                        <b:message id="msg5" for="author_name" span="4" />
+                    </b:row>
+
+
+                    <b:row>
+                        <b:inputText id="book_isbn" label="Book Title" render-label="true"
+                                     required="true" required-message="Please Enter book ISBN"
+                                     ajax="true" update="msg6" large-screen="one-third" />
+                        <b:message id="msg6" for="book_isbn" span="4" />
+                    </b:row>
+
+                    <b:row>
+                        <b:inputText id="book_price" label="Price" render-label="true"
+                                     required="true" required-message="Please Enter book  Price"
+                                     ajax="true" update="msg7" large-screen="one-third" />
+                        <b:message id="msg7" for="book_price" span="4" />
+                    </b:row>
+
+                    <b:row>
+                        <b:commandButton type="submit" value="Submit" ajax="true" process="@form" update="@form"  />
+                    </b:row>
+
+                    <b:row>
+                        <b:alert severity="success"  ><h:outputText> </h:outputText></b:alert>
+                    </b:row>
+                </b:container>
+            </h:form>
+        </div>
+
+
+    </h:body>
+</html>
+

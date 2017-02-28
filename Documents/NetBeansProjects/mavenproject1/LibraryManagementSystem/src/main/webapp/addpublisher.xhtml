@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+      <div class="container_div1">
+		<h:form>
+			<b:container>
+				<h1>Add New Publisher here</h1>
+				<b:row>
+					<b:inputText label="Name" render-label="true" id="publisher_name"
+						required="true" maxlength="40" large-screen="one-third"
+						required-message="Please Enter Publisher name" ajax="true"
+						update="msg1" />
+					<b:message id="msg1" for="publisher_name" span="4" />
+				</b:row>
+				<b:row>
+					<b:selectOneMenu label="Publisher Year" render-label="true"
+						span="2" required="true" id="years">
+
+						<b:message for="years" span="4"/>
+					</b:selectOneMenu>
+				</b:row>
+				<b:row>
+					<b:inputText label="Edition" renderLabel="true" id="edition"
+						large-screen="one-third" required="true" maxlength="40"
+						required-message="Please Enter your Publisher Edition" ajax="true"
+						update="msg3" />
+					<b:message id="msg3" for="edition" span="4" />
+				</b:row>
+				<b:row>
+					<b:inputTextarea label="Address" render-label="true" id="address"
+						maxlength="200" required="true" large-screen="one-third"
+						required-message="Please Enter Publisher Address" ajax="true"
+						update="msg4" />
+					<b:message id="msg4" for="address" span="4" />
+				</b:row>
+				<b:row>
+					<b:inputText label="Phone" render-label="true" id="phone"
+						maxlength="10" required="true" large-screen="one-third"
+						required-message="Please Enter Publisher Phohe" ajax="true"
+						update="msg5" />
+					<b:message id="msg5" for="phone" span="4" />
+				</b:row>
+				<b:row>
+					<b:inputText label="Fax" render-label="true" id="fax"
+						required="true" large-screen="one-third" ajax="true"
+						required-message="Please Enter Publisher Fax" update="msg5" />
+					<b:message id="msg6" for="fax" span="4" />
+				</b:row>
+				<b:row>
+					<b:inputText label="Email" type="email" id="p_email"
+						required="true" large-screen="one-third" required-message="Please Enter Publisher Email"
+						update="msg7" ajax="true" 
+						/>
+					<b:message id="msg7" for="p_email" span="4" />
+				</b:row>
+				<b:row>
+					<b:commandButton type="submit" value="Submit" size="nm" span="1"
+						class="btn1" ajax="true" process="@form" update="@form" />
+					<b:commandButton type="reset" value="Reset" size="nm" span="1"
+						class="btn2" />
+				</b:row>
+				<b:row>
+				<b:alert severity="success" id="alert">
+				<h:outputText></h:outputText>
+				</b:alert>
+				</b:row>
+			</b:container>
+		</h:form>
+	</div>
+
+    </h:body>
+</html>
+
