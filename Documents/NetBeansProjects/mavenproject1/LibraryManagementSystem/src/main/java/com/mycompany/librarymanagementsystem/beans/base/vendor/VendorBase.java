@@ -15,6 +15,7 @@ import javax.faces.bean.ManagedBean;
 import javax.persistence.Embeddable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @SessionScoped
 @Embeddable
@@ -22,21 +23,15 @@ import javax.persistence.GenerationType;
 public class VendorBase implements Serializable{
 
     private static final long serialVersionUID = 1L;
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+   
     private String name;
     private String adddress;
     private long phone;
     private long fax;
     private String email;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    
+   
 
     public String getName() {
         return name;

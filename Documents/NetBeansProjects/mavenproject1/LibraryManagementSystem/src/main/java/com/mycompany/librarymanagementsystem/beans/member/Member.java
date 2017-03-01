@@ -1,6 +1,7 @@
 package com.mycompany.librarymanagementsystem.beans.member;
 
 import com.mycompany.librarymanagementsystem.beans.base.person.PersonalInfo;
+import java.io.Serializable;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedProperty;
@@ -11,7 +12,7 @@ import javax.persistence.Id;
 
 @Named(value = "member")
 @Dependent
-public class Member {
+public class Member implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

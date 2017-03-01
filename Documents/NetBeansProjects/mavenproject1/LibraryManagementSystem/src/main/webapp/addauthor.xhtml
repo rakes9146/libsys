@@ -2,8 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -31,15 +31,17 @@
                         <b:message id="msg2" for="address" span="4"  />
                     </b:row>
                     <b:row>
-                        <b:inputText label="Phone" id="phone" maxlength="10"
+                        <b:inputText label="Phone" id="phone" maxlength="10" placeholder="XXXXXXXXXX"
                                      required="true" required-message="Please Enter your mobile number"
-                                     large-screen="one-third" update="msg3" ajax="true" 
+                                     large-screen="one-third" update="msg3"
                                      value="#{authorDetails.base1.phone}"
-                                     />
+                                     >
+                            <f:validateLength minimum="10" />
+                        </b:inputText>
                         <b:message for="phone" id="msg3" span="4" />
                     </b:row>
                     <b:row>
-                        <b:inputText label="Fax" render-label="true" id="fax"
+                        <b:inputText label="Fax" render-label="true" id="fax" 
                                      large-screen="one-third" span="4" value="#{authorDetails.base1.fax}" />
                         <b:message for="fax" />
                     </b:row>
@@ -49,19 +51,20 @@
                                      large-screen="one-third" update="msg4" ajax="true" 
                                      value="#{authorDetails.base1.email}"
                                      />
+
                         <b:message id="msg4" for="p_email" span="4" />
                     </b:row>
                     <b:row>
                         <b:commandButton type="submit" value="submit" size="nm" span="1"
                                          class="btn1" process="@form" update="@form" rendered="true"
-                                         onclick="ajax:authorDetails.save()" />
+                                         onclick="ajax:authorDetails.add()" />
                         <b:commandButton type="reset" value="Reset" size="nm" span="1"
                                          class="btn2" />
                     </b:row>
 
                     <b:row>
-                        <b:alert severity="success"  id="author_alert">
-                            <h:outputText id="success_message" value="#{author.msg}"></h:outputText>
+                        <b:alert severity="success"  id="author_alert" visible="#{authorDetails.bam.visibility}" span="4">
+                            <h:outputText id="success_message" value="#{authorDetails.bam.message}"></h:outputText>
                         </b:alert>
                     </b:row>
                 </b:container>

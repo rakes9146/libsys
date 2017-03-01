@@ -7,6 +7,8 @@ import java.sql.Date;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Named(value = "book")
 @SessionScoped
@@ -23,6 +25,8 @@ public class Book implements Serializable {
     private int supplier_id;
     private int publisher_id;
     private int author_id;
+
+    @Temporal(TemporalType.DATE)
     private Date registration_date;
 
     public int getBook_id() {

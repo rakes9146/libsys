@@ -1,21 +1,30 @@
 package com.mycompany.librarymanagementsystem.beans.base.person;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.faces.bean.ManagedBean;
 import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-@ManagedBean(name="p_info")
+@ManagedBean(name = "p_info")
 @Embeddable
-public class PersonalInfo {
+public class PersonalInfo implements Serializable {
 
     private String first_name;
     private String middle_name;
     private String last_name;
+
+    @Temporal(TemporalType.DATE)
+    private Date dateOfBirth;
+
     private String address;
     private String email;
     private String mobile_number;
     private String gender;
+
+    @Temporal(TemporalType.DATE)
     private Date registration_date;
     private String security_question;
     private String secutiyt_answer;
@@ -42,6 +51,14 @@ public class PersonalInfo {
 
     public void setLast_name(String last_name) {
         this.last_name = last_name;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getAddress() {
@@ -82,6 +99,22 @@ public class PersonalInfo {
 
     public void setRegistration_date(Date registration_date) {
         this.registration_date = registration_date;
+    }
+
+    public String getSecurity_question() {
+        return security_question;
+    }
+
+    public void setSecurity_question(String security_question) {
+        this.security_question = security_question;
+    }
+
+    public String getSecutiyt_answer() {
+        return secutiyt_answer;
+    }
+
+    public void setSecutiyt_answer(String secutiyt_answer) {
+        this.secutiyt_answer = secutiyt_answer;
     }
 
 }
