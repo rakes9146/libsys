@@ -19,6 +19,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/addpublisher.xhtml</welcome-file>
+        <welcome-file>faces/addmember.xhtml</welcome-file>
     </welcome-file-list>
 </web-app>

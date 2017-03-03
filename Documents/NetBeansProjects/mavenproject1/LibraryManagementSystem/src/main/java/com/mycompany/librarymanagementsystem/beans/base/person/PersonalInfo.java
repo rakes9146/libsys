@@ -1,15 +1,15 @@
 package com.mycompany.librarymanagementsystem.beans.base.person;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 import javax.persistence.Embeddable;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@ManagedBean(name = "p_info")
 @Embeddable
+@ManagedBean(name = "p_info")
 public class PersonalInfo implements Serializable {
 
     private String first_name;
@@ -25,7 +25,7 @@ public class PersonalInfo implements Serializable {
     private String gender;
 
     @Temporal(TemporalType.DATE)
-    private Date registration_date;
+    private Date registration_date = new Date() ;
     private String security_question;
     private String secutiyt_answer;
 
