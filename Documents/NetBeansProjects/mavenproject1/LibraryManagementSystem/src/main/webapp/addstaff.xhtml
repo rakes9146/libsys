@@ -10,127 +10,127 @@
     </h:head>
     <h:body>
         <link href="resources/css/my.css" rel="stylesheet" type="text/css"/>
-                <div class="container_div1">
-                    <b:container>
-                        <h1>User Registration Here</h1>
-                        <h:form>
-                            <b:panel title="Personal Details" collapsible="false" look="primary">
-                                <b:row>
-                                    <b:inputText label="First Name" render-label="true" id="fname" value="#{staff.personalInfo.first_name}"
-                                                 maxlength="20" large-screen="one-third" required="true"
-                                                 required-message="Please Enter your name" ajax="true"
-                                                 update="msg1" />
-                                    <b:message id="msg1" for="fname" span="4" />
-                                </b:row>
-                                <b:row>
-                                    <b:inputText label="Middle Name" render-label="true" id="mname" value="#{staff.personalInfo.middle_name}"
-                                                 maxlength="20" large-screen="one-third" required="true"
-                                                 required-message="Please Enter Your Middle Name" ajax="true"
-                                                 update="msg2" />
-                                    <b:message id="msg2" for="mname" span="4" />
-                                </b:row>
-                                <b:row>
-                                    <b:inputText label="Last Name" render-label="true" id="sname" value="#{staff.personalInfo.last_name}"
-                                                 maxlength="20" large-screen="one-third" required="true"
-                                                 required-message="Please Enter Your Last Name" ajax="true" 
-                                                 update="msg3" />
-                                    <b:message id="msg3" for="sname" span="4" />
-                                </b:row>
-                                <b:row>
-                                    <b:dateTimePicker render-label="true" label="Date" id="dob" required="true" required-message="Please Enter your Date of Birth"
-                                                      large-screen="one-third" allow-input-toggle="true" update="datens" ajax="true" value="#{staff.personalInfo.dateOfBirth}"
-                                                      show-date="true" show-time="false" mode="plain" side-by-side="true" format="DD/MM/YYYY"
-                                                      toolbar-placement="top" tooltip-position="auto right" 
-                                                      >
-                                    </b:dateTimePicker>
-                                    <b:message for="dob" id="datens"  span="4"/>
-                                </b:row>
-                            </b:panel>
-                            <b:panel title="Residential Details" look="primary" collapsible="false">
-                                <b:row>
-                                    <b:inputTextarea label="Local Address" rows="5" maxlength="200" value="#{staff.personalInfo.address}"
-                                                     large-screen="one-third" id="laddress" required="true"
-                                                     required-message="Please Enter Your Address" ajax="true"
-                                                     update="msg5" />
-                                    <b:message id="msg5" for="laddress" span="4"/>
-                                </b:row>
-                            </b:panel>
+        <div class="container_div1">
+            <b:container>
+                <h1>User Registration Here</h1>
+                <h:form>
+                    <b:panel title="Personal Details" collapsible="false" look="primary">
+                        <b:row>
+                            <b:inputText label="First Name" render-label="true" id="fname" value="#{staff.personalInfo.first_name}"
+                                         maxlength="20" large-screen="one-third" required="true"
+                                         required-message="Please Enter your name" ajax="true"
+                                         update="msg1" />
+                            <b:message id="msg1" for="fname" span="4" />
+                        </b:row>
+                        <b:row>
+                            <b:inputText label="Middle Name" render-label="true" id="mname" value="#{staff.personalInfo.middle_name}"
+                                         maxlength="20" large-screen="one-third" required="true"
+                                         required-message="Please Enter Your Middle Name" ajax="true"
+                                         update="msg2" />
+                            <b:message id="msg2" for="mname" span="4" />
+                        </b:row>
+                        <b:row>
+                            <b:inputText label="Last Name" render-label="true" id="sname" value="#{staff.personalInfo.last_name}"
+                                         maxlength="20" large-screen="one-third" required="true"
+                                         required-message="Please Enter Your Last Name" ajax="true" 
+                                         update="msg3" />
+                            <b:message id="msg3" for="sname" span="4" />
+                        </b:row>
+                        <b:row>
+                            <b:dateTimePicker render-label="true" label="Date" id="dob" required="true" required-message="Please Enter your Date of Birth"
+                                              large-screen="one-third" allow-input-toggle="true" update="datens" ajax="true" value="#{staff.personalInfo.dateOfBirth}"
+                                              show-date="true" show-time="false" mode="plain" side-by-side="true" format="DD/MM/YYYY"
+                                              toolbar-placement="top" tooltip-position="auto right" 
+                                              >
+                            </b:dateTimePicker>
+                            <b:message for="dob" id="datens"  span="4"/>
+                        </b:row>
+                    </b:panel>
+                    <b:panel title="Residential Details" look="primary" collapsible="false">
+                        <b:row>
+                            <b:inputTextarea label="Local Address" rows="5" maxlength="200" value="#{staff.personalInfo.address}"
+                                             large-screen="one-third" id="laddress" required="true"
+                                             required-message="Please Enter Your Address" ajax="true"
+                                             update="msg5" />
+                            <b:message id="msg5" for="laddress" span="4"/>
+                        </b:row>
+                    </b:panel>
 
-                            <b:panel title="Contact Detils" look="primary" collapsible="false">
-                                <b:row>
-                                    <b:inputText type="text" label="Mobile Number" renderLabel="true" value="#{staff.personalInfo.mobile_number}"
-                                                 maxlength="10" id="mobno" large-screen="one-third" required="true" validator-message="Invalid Input Please Enter Valid Input"
-                                                 required-message="Please Enter Your Mobile Number" ajax="true"
-                                                 update="msg21" >
-                                        <f:validateRegex pattern="^\d{10}$" for="mobno" />
-                                    </b:inputText>
-                                    <b:message id="msg21" for="mobno" span="4" />
-                                </b:row>
+                    <b:panel title="Contact Detils" look="primary" collapsible="false">
+                        <b:row>
+                            <b:inputText type="text" label="Mobile Number" renderLabel="true" value="#{staff.personalInfo.mobile_number}"
+                                         maxlength="10" id="mobno" large-screen="one-third" required="true" validator-message="Invalid Input Please Enter Valid Input"
+                                         required-message="Please Enter Your Mobile Number" ajax="true"
+                                         update="msg21" >
+                                <f:validateRegex pattern="^\d{10}$" for="mobno" />
+                            </b:inputText>
+                            <b:message id="msg21" for="mobno" span="4" />
+                        </b:row>
 
-                                <b:row>
-                                    <b:inputText type="email" label="Email" render-label="true" value="#{staff.personalInfo.email}"
-                                                 maxlength="30" id="email" large-screen="one-third" required="true" validator-message="This is not Valid Email Format"
-                                                 required-message="Please Enter your Email Id" ajax="true"
-                                                 update="msg6" >
-                                        <f:validateRegex pattern="^(.+)@(.+)$"  for="email" />
-                                    </b:inputText>
-                                    <b:message id="msg6" for="email" span="4" />
-                                </b:row>
-                            </b:panel> <b:panel title="Identification Proof" look="primary" collapsible="false">
-                                <b:row>
-                                    <b:selectOneMenu label="Select Id Proof Type" render-label="true" required="true"  large-screen="one-third"
-                                                     id="sipt" update="msui" ajax="true" required-message="Please Select Id" value="#{staff.personalInfo.id_proof_type}"
-                                                     >
-                                        <f:selectItem itemValue="pan_card" itemLabel="PAN CARD" />
-                                        <f:selectItem itemValue="voter_card" itemLabel="VOTER CARD" />
-                                        <f:selectItem  itemValue="aadhar_card" itemLabel="AADHAR CARD" />
-                                    </b:selectOneMenu>
-                                    <b:message for="sipt" id="msui" span="4" />
-                                </b:row>
-                                <b:row>
-                                    <b:inputText label="Enter Id Number" render-label="true" ajax="true" value="#{staff.personalInfo.id_proof_number}"
-                                                 id='ein' update="eids" large-screen="one-third" maxlength="10" required="true" required-message="Please Enter Id number"
-                                                 />
-                                    <b:message for="ein" id="eids" span="4" />
-                                </b:row>  
+                        <b:row>
+                            <b:inputText type="email" label="Email" render-label="true" value="#{staff.personalInfo.email}"
+                                         maxlength="30" id="email" large-screen="one-third" required="true" validator-message="This is not Valid Email Format"
+                                         required-message="Please Enter your Email Id" ajax="true"
+                                         update="msg6" >
+                                <f:validateRegex pattern="^(.+)@(.+)$"  for="email" />
+                            </b:inputText>
+                            <b:message id="msg6" for="email" span="4" />
+                        </b:row>
+                    </b:panel> <b:panel title="Identification Proof" look="primary" collapsible="false">
+                        <b:row>
+                            <b:selectOneMenu label="Select Id Proof Type" render-label="true" required="true"  large-screen="one-third"
+                                             id="sipt" update="msui" ajax="true" required-message="Please Select Id" value="#{staff.personalInfo.id_proof_type}"
+                                             >
+                                <f:selectItem itemValue="pan_card" itemLabel="PAN CARD" />
+                                <f:selectItem itemValue="voter_card" itemLabel="VOTER CARD" />
+                                <f:selectItem  itemValue="aadhar_card" itemLabel="AADHAR CARD" />
+                            </b:selectOneMenu>
+                            <b:message for="sipt" id="msui" span="4" />
+                        </b:row>
+                        <b:row>
+                            <b:inputText label="Enter Id Number" render-label="true" ajax="true" value="#{staff.personalInfo.id_proof_number}"
+                                         id='ein' update="eids" large-screen="one-third" maxlength="10" required="true" required-message="Please Enter Id number"
+                                         />
+                            <b:message for="ein" id="eids" span="4" />
+                        </b:row>  
 
-                            </b:panel>
-
-
-                            <b:panel title="Staff Role" look="primary" collapsible="false">
-                                <b:selectOneMenu label="Select Staff Role" render-label="true" required="true" ajax="true" large-screen="one-third"
-                                                 id="sr" update="srm"
-                                                 >
-                                    <f:selectItem itemLabel="Librararian Seocond Admin" value="admin"
-                                                  itemValue="Pages"
-                                                  /> 
-                                    <f:selectItem itemLabel="Library Assistant (Clerk)" itemValue="assistant"  /> 
-                                </b:selectOneMenu>
-                                <b:message id="srm" for="sr" />
-                            </b:panel>
+                    </b:panel>
 
 
+                    <b:panel title="Staff Role" look="primary" collapsible="false">
+                        <b:selectOneMenu label="Select Staff Role" render-label="true" required="true" ajax="true" large-screen="one-third"
+                                         id="sr" update="srm"
+                                         >
+                            <f:selectItem itemLabel="Librararian Seocond Admin" value="admin"
+                                          itemValue="Pages"
+                                          /> 
+                            <f:selectItem itemLabel="Library Assistant (Clerk)" itemValue="assistant"  /> 
+                        </b:selectOneMenu>
+                        <b:message id="srm" for="sr" />
+                    </b:panel>
 
 
-                            <b:row>
-                                <b:commandButton type="submit" value="Register" class="btn1" ajax="true" onclick="ajax:staff.add()"
-                                                 span="1" size="nm" process="@form" update="@form" />
-                                <b:commandButton type="reset" value="Reset" class="btn2" span="1"
-                                                 size="nm" />
-                            </b:row>
 
-                            <b:row>
-                                <br />
-                            </b:row>
-                            <b:row>
-                                <b:alert severity="success" id="ak" visible="#{staff.bam.visibility}" span="4">
-                                    <h:outputText id="ot" value="#{staff.bam.message}"></h:outputText>
-                                </b:alert>
-                            </b:row>
-                        </h:form>
-                    </b:container>
-                </div>
-         
+
+                    <b:row>
+                        <b:commandButton type="submit" value="Register" class="btn1" ajax="true" onclick="ajax:staff.add()"
+                                         span="1" size="nm" process="@form" update="@form" />
+                        <b:commandButton type="reset" value="Reset" class="btn2" span="1"
+                                         size="nm" />
+                    </b:row>
+
+                    <b:row>
+                        <br />
+                    </b:row>
+                    <b:row>
+                        <b:alert severity="success" id="ak" visible="#{staff.bam.visibility}" span="4">
+                            <h:outputText id="ot" value="#{staff.bam.message}"></h:outputText>
+                        </b:alert>
+                    </b:row>
+                </h:form>
+            </b:container>
+        </div>
+
     </h:body>
 </html>
 
