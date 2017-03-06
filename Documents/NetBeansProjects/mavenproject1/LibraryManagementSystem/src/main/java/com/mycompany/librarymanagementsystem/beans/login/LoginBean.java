@@ -15,6 +15,7 @@ public class LoginBean {
 
     private String user_id;
     private String user_pass;
+    private String user_type;
 
     public String getUser_id() {
         return user_id;
@@ -32,16 +33,24 @@ public class LoginBean {
         this.user_pass = user_pass;
     }
 
+    public String getUser_type() {
+        return user_type;
+    }
+
+    public void setUser_type(String user_type) {
+        this.user_type = user_type;
+    }
+
     public String validate() {
 
-        if ("rake".equals(this.user_id) && "rake".equals(this.user_pass)) {
+        if ("rake".equals(this.user_id) && "rake".equals(this.user_pass) && "admin".equals(this.user_type)) {
 
             FacesContext context = FacesContext.getCurrentInstance();
             context.getExternalContext().getSessionMap().put("user", this.user_id);
-            return "member?faces-redirect=true";
+            return "login_home?faces-redirect=true";
 
         } else {
-            return "home?faces-redirect=true";
+            return "error?faces-redirect=true";
         }
 
     }
@@ -49,6 +58,6 @@ public class LoginBean {
     public String logout() {
 
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "login?faces-redirect=true";
+        return "staff_login?faces-redirect=true";
     }
 }

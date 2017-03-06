@@ -19,24 +19,28 @@
                             <b:row>
                                 <b:inputText label="User Id" required="true" required-message="Please Enter User Id" maxlength="5"
                                              ajax="true" autocomplete="false" large-screen="one-third" id="login_id" update="msg1"
+                                             value="#{loginBean.user_id}"
                                              />
                                 <b:message for="login_id" id="msg1" span="4" />
                             </b:row>
                             <b:row>
                                 <b:inputSecret label="Password" required="true" required-message="Please Enter Password" maxlength="16"
                                                autocomplete="false" large-screen="one-third" id="passwd" update="msg2"
+                                               value="#{loginBean.user_pass}"
                                                />   
                                 <b:message for="passwd" id="msg2" span="4" />
                             </b:row>
                             <b:row>
-                                <b:selectOneMenu label="Role"  value="" ajax="true" large-screen="one-third" required="true" required-message="Please Select Required Message">
-                                    <f:selectItem itemLabel="Librarian(Admin)" value="admin" />
-                                    <f:selectItem itemLabel="Assistant Staff" value="assistant_staff" />
+                                <b:selectOneMenu label="Role"  ajax="true" large-screen="one-third" required="true" required-message="Please Select Required Message"
+                                                 value="#{loginBean.user_type}"
+                                                 >
+                                    <f:selectItem itemLabel="Librarian(Admin)" itemValue="admin" />
+                                    <f:selectItem itemLabel="Assistant Staff" itemValue="assistant_staff" />
                                 </b:selectOneMenu>
                             </b:row>
 
-                            <b:commandButton  type="submit" value="Submit" ajax="true" process="@form" update="@form" 
-                                              onclick="ajax:" 
+                            <b:commandButton  type="submit" value="Submit" 
+                                              action="#{loginBean.validate()}" 
                                               /> 
                             <b:commandButton type="reset" value="Reset" ajax="true" process="@form" update="@form" />  
                         </b:container>

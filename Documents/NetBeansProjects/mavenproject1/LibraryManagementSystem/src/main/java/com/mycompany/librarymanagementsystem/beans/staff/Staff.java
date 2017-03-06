@@ -8,6 +8,7 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -78,6 +79,7 @@ public class Staff implements Serializable {
 
     }
 
+     
     public void clear() {
 
         this.personalInfo.setFirst_name(null);
