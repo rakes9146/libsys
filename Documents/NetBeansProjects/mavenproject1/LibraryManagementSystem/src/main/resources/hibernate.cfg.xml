@@ -8,13 +8,14 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>
         <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
     
         <mapping class="com.mycompany.librarymanagementsystem.beans.author.AuthorDetails"></mapping>
         <mapping class="com.mycompany.librarymanagementsystem.beans.supplier.Supplier"></mapping>
         <mapping class="com.mycompany.librarymanagementsystem.beans.category.Category"></mapping>
          <mapping class="com.mycompany.librarymanagementsystem.beans.publisher.Publisher"></mapping>
          <mapping class="com.mycompany.librarymanagementsystem.beans.member.Member"></mapping>
+         <mapping class="com.mycompany.librarymanagementsystem.beans.staff.Staff"></mapping>
     </session-factory>
   
   

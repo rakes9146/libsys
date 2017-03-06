@@ -9,10 +9,11 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-
+        <link href="resources/css/my.css" rel="stylesheet" type="text/css"/>
         <div>
             <h:form>
                 <b:container>
+                    <h1>Add New Book here</h1>
                     <b:row>
                         <b:inputText id="book_title" label="Book Title" render-label="true"
                                      required="true" required-message="Please Enter book title"
@@ -72,11 +73,16 @@
                     </b:row>
 
                     <b:row>
-                        <b:commandButton type="submit" value="Submit" ajax="true" process="@form" update="@form"  />
+                        <b:commandButton type="submit" value="Submit" ajax="true" process="@form" update="@form"
+                                         class="btn1" size="nm" span="1" 
+                                         />
+                        <b:commandButton type="reset" value="Reset" ajax="true" process="@form" update="@form"
+                                         class="btn2" size="nm" span="1"
+                                         />
                     </b:row>
 
                     <b:row>
-                        <b:alert severity="success"  ><h:outputText> </h:outputText></b:alert>
+                        <b:alert severity="success" visible="#{baseam.visibility}"  ><h:outputText> </h:outputText></b:alert>
                     </b:row>
                 </b:container>
             </h:form>

@@ -1,14 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.librarymanagementsystem.dao.staff;
 
-/**
- *
- * @author RAKESHLOHAR
- */
+import com.mycompany.librarymanagementsystem.beans.staff.Staff;
+import org.hibernate.Session;
+import hibernate.util.HibernateUtil;
+import org.hibernate.Transaction;
+
 public class StaffDao {
-    
+
+    public void save(Staff staff) {
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction t = null;
+        try {
+            t = session.beginTransaction();
+            session.save(staff);
+            t.commit();
+        } catch (Exception e) {
+
+            if (t != null) {
+                t.rollback();
+            }
+            e.printStackTrace();
+        }
+
+    }
+
 }

@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/resources/template/template_layout.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <div>
+                        <b:container>
+                            <h1> Member Login </h1>
+                            <b:row>
+                                <b:inputText label="User Id" required="true" required-message="Please Enter User Id" maxlength="5"
+                                             ajax="true" autocomplete="false" large-screen="one-third" id="login_id" update="msg1"
+                                             />
+                                <b:message for="login_id" id="msg1" span="4" />
+                            </b:row>
+                            <b:row>
+                                <b:inputSecret label="Password" required="true" required-message="Please Enter Password" maxlength="16"
+                                               autocomplete="false" large-screen="one-third" id="passwd" update="msg2"
+                                               />   
+                                <b:message for="passwd" id="msg2" span="4" />
+                            </b:row>
+                            <b:row>
+                                <b:selectOneMenu label="Role"  value="" ajax="true" large-screen="one-third" required="true" required-message="Please Select Required Message">
+                                    <f:selectItem itemLabel="Librarian(Admin)" value="admin" />
+                                    <f:selectItem itemLabel="Assistant Staff" value="assistant_staff" />
+                                </b:selectOneMenu>
+                            </b:row>
+
+                            <b:commandButton  type="submit" value="Submit" ajax="true" process="@form" update="@form" 
+                                              onclick="ajax:" 
+                                              /> 
+                            <b:commandButton type="reset" value="Reset" ajax="true" process="@form" update="@form" />  
+                        </b:container>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

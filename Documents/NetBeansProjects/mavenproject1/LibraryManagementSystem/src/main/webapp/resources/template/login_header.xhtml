@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      >
+    <h:head>
+        <title></title>
+    </h:head>
+    <h:body>
+        <ui:component>
+            <h:form>
+            <b:navBar brand="Library Management System" brand-align="left">
+                <b:navbarLinks pull="right">
+                    <b:navCommandLink value="Home" outcome="login_home.xhtml" />
+                    <b:navCommandLink value="Author" outcome="author" />
+                    <b:navCommandLink value="Books" outcome="book.xhtml" />
+                    <b:navCommandLink value="Category" outcome="category.xhtml" />
+                    <b:navCommandLink value="Member" outcome="member" />
+                    <b:navCommandLink value="Publisher" outcome="publisher.xhtml" />
+                    <b:navCommandLink value="Staff" outcome="staff.xhtml" />
+                    <b:navCommandLink value="Supplier" outcome="supplier.xhtml" />
+                    <b:navCommandLink value="Logout"  />
+                </b:navbarLinks>
+            </b:navBar>
+            </h:form>
+        </ui:component>
+        
+    </h:body>
+</html>
+

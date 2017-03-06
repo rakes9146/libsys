@@ -8,7 +8,19 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        
+               <ui:composition template="/resources/template/login_template.xhtml">
+            <ui:define name="content">`
+          <b:tabView pills="true" >
+                   <b:tab title="Add Supplier">
+                       <ui:include src="addsupplier.xhtml" />
+                    </b:tab>
+                    <b:tab title="Supplier Report">
+                        This is the report section
+                    </b:tab>
+                </b:tabView>
+            </ui:define>
+               </ui:composition>
     </h:body>
 </html>
 

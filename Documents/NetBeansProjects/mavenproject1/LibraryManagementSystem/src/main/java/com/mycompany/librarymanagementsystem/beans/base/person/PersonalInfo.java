@@ -23,9 +23,11 @@ public class PersonalInfo implements Serializable {
     private String email;
     private String mobile_number;
     private String gender;
+    private String id_proof_number;
+    private String id_proof_type;
 
     @Temporal(TemporalType.DATE)
-    private Date registration_date = new Date() ;
+    private Date registration_date = new Date();
     private String security_question;
     private String secutiyt_answer;
 
@@ -115,6 +117,22 @@ public class PersonalInfo implements Serializable {
 
     public void setSecutiyt_answer(String secutiyt_answer) {
         this.secutiyt_answer = secutiyt_answer;
+    }
+
+    public String getId_proof_number() {
+        return id_proof_number;
+    }
+
+    public void setId_proof_number(String id_proof_number) {
+        this.id_proof_number = id_proof_number;
+    }
+
+    public String getId_proof_type() {
+        return id_proof_type;
+    }
+
+    public void setId_proof_type(String id_proof_type) {
+        this.id_proof_type = id_proof_type;
     }
 
 }

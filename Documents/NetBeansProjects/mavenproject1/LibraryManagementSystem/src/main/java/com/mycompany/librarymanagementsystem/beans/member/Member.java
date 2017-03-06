@@ -3,6 +3,8 @@ package com.mycompany.librarymanagementsystem.beans.member;
 import com.mycompany.librarymanagementsystem.beans.base.am.BaseAlertMesssage;
 import com.mycompany.librarymanagementsystem.beans.base.person.PersonalInfo;
 import com.mycompany.librarymanagementsystem.dao.member.MemberDao;
+import com.mycompany.librarymanagementsystem.passwordgenerator.EmailDispatcher;
+import com.mycompany.librarymanagementsystem.passwordgenerator.PasswordGenerator;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
@@ -32,6 +34,8 @@ public class Member implements Serializable {
     @ManagedProperty(value = "#{baseam}")
     private BaseAlertMesssage bam;
 
+    private String password;
+
     public int getMember_id() {
         return member_id;
     }
@@ -49,20 +53,31 @@ public class Member implements Serializable {
     }
 
     public BaseAlertMesssage getBam() {
-        return bam;
+        return bam;   
     }
 
     public void setBam(BaseAlertMesssage bam) {
         this.bam = bam;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public void add() {
 
         try {
             MemberDao md = new MemberDao();
+            EmailDispatcher ed = new EmailDispatcher();
+//            genPas();
             md.save(this);
+            ed.dispatchEmail(this.pIfPersonalInfo.getFirst_name(), this.pIfPersonalInfo.getEmail(), Integer.toString(this.getMember_id()), this.getPassword());
             bam.setVisibility("lg");
-            bam.setMessage("Data Saved Succesffyly");
+            bam.setMessage(member_id + "Data Saved Succesffyly and Email Sent to Student");
             clear();
         } catch (Exception e) {
 
@@ -89,4 +104,10 @@ public class Member implements Serializable {
         this.pIfPersonalInfo.setRegistration_date(null);
         this.pIfPersonalInfo.setAddress(null);
     }
+
+    public void genPas() {
+        PasswordGenerator pg = new PasswordGenerator();
+        this.setPassword(pg.generatePassword(this.pIfPersonalInfo.getId_proof_number(), this.pIfPersonalInfo.getDateOfBirth()));
+    }
+
 }

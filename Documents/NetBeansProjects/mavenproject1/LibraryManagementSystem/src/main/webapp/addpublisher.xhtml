@@ -9,6 +9,7 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
+            <link href="resources/css/my.css" rel="stylesheet" type="text/css"/> 
         <div class="container_div1">
             <h:form>
                 <b:container>
@@ -64,7 +65,7 @@
                     <b:row>
                         <b:commandButton type="submit" value="Submit" size="nm" span="1"
                                          class="btn1" ajax="true" process="@form" update="@form" onclick="ajax:publisher.add()" />
-                        <b:commandButton type="reset" value="Reset" size="nm" span="1"
+                        <b:commandButton type="reset" value="Reset" size="nm" span="1" 
                                          class="btn2" />
                     </b:row>
                     <b:row>
@@ -75,7 +76,7 @@
                 </b:container>
             </h:form>
         </div>
-
+           
     </h:body>
 </html>
 
