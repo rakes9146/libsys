@@ -51,15 +51,19 @@
                     </b:row>
                     <b:row>
                         <b:inputText label="Fax" render-label="true" id="fax" value="#{publisher.p.fax}"
-                                     required="true" large-screen="one-third" ajax="true"
-                                     required-message="Please Enter Publisher Fax" update="msg5" />
+                                     required="true" large-screen="one-third" ajax="true" validator-message="Invalid Number Format"
+                                     required-message="Please Enter Publisher Fax" update="msg5" >
+                   <f:validateRegex pattern="^\d{10}$" for="mobno" />
+                         </b:inputText>
                         <b:message id="msg6" for="fax" span="4" />
                     </b:row>
                     <b:row>
                         <b:inputText label="Email" type="email" id="p_email" value="#{publisher.p.email}"
                                      required="true" large-screen="one-third" required-message="Please Enter Publisher Email"
-                                     update="msg7" ajax="true" 
-                                     />
+                                     update="msg7" ajax="true"  validator-message="Invalid Email Foramt"
+                                     >
+                              <f:validateRegex pattern="^(.+)@(.+)$"  for="email" />
+                        </b:inputText>
                         <b:message id="msg7" for="p_email" span="4" />
                     </b:row>
                     <b:row>
@@ -68,8 +72,12 @@
                         <b:commandButton type="reset" value="Reset" size="nm" span="1" 
                                          class="btn2" />
                     </b:row>
+                    
                     <b:row>
-                        <b:alert severity="success" visible="#{publisher.bam.visibility}">
+                                <br />
+                            </b:row> 
+                    <b:row>
+                        <b:alert severity="success" visible="#{publisher.bam.visibility}" span="4">
                             <h:outputText value="#{publisher.bam.message}"></h:outputText>
                         </b:alert>
                     </b:row>

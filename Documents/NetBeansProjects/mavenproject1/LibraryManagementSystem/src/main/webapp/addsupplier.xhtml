@@ -9,7 +9,7 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
- <link href="resources/css/my.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/my.css" rel="stylesheet" type="text/css"/>
         <div class="container_div1">
             <h:form>
                 <b:container>
@@ -28,10 +28,12 @@
                         <b:message id="msg2" for="supplier_address" span="4" />
                     </b:row>
                     <b:row>
-                        <b:inputText label="Phone" render-label="true" id="supplier_phone" value="#{supplier.vb.phone}"
+                        <b:inputText label="Phone" render-label="true" id="supplier_phone" value="#{supplier.vb.phone}" validator-message="Invalid Number Format"
                                      maxlength="10" required="true" large-screen="one-third" required-message="Please Enter Supplier Phone"
-                                     update="msg3" ajax="true" >
-                            <f:validateLength maximum="10" />
+                                     update="msg3" ajax="true" > 
+
+                            <f:validateRegex pattern="^\d{10}$" for="mobno" />
+
                         </b:inputText>
                         <b:message id="msg3" for="supplier_phone"  span="4" />
                     </b:row>
@@ -45,8 +47,10 @@
                     <b:row>
                         <b:inputText label="Email" type="email" id="supplier_email" value="#{supplier.vb.email}" 
                                      required="true" large-screen="one-third"  required-message="Please Enter Supplier Email"
-                                     update="msg5" ajax="true"
-                                     />
+                                     update="msg5" ajax="true" validator-message="Invalid Number Format"
+                                     >
+
+                        </b:inputText> 
                         <b:message id="msg5" for="supplier_email" span="4" />
                     </b:row>
                     <b:row>
@@ -54,6 +58,9 @@
                                          class="btn1" ajax="true" process="@form" update="@form" onclick="ajax:supplier.add()" />
                         <b:commandButton type="reset" value="Reset" size="nm" span="1" ajax="true" 
                                          class="btn2" />
+                    </b:row>
+                    <b:row>
+                        <br />
                     </b:row>
                     <b:row>
                         <b:alert severity="success" id="al" visible="#{supplier.bam.visibility}" span="4">
