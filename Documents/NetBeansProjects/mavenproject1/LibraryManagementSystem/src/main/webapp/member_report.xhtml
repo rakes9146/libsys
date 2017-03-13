@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
+    <h:head>
+        <title>Member Report and Update</title>
+    </h:head>
+    <h:body>
+          <ui:composition template="/resources/template/login_template.xhtml">
+            <ui:define name="content">`
+        <h:form>
+            <b:row>
+                <br />
+            </b:row>
+
+            <b:dataTable value="#{member.memberList}" var="ls"   page-length="10" page-length-menu="10,20,30"
+                         striped="true" span="12" select="true" scroll-x="false"
+                         >
+                <b:dataTableColumn label="Member Id" value="#{ls.member_id}" />
+                <b:dataTableColumn label="First Name" value="#{ls.getpIfPersonalInfo().first_name}" />
+                <b:dataTableColumn label="Middle Name"  value="#{ls.getpIfPersonalInfo().middle_name}" />
+                <b:dataTableColumn label="Last Name"   value="#{ls.getpIfPersonalInfo().last_name}" />
+                <b:dataTableColumn label="Gender"   value="#{ls.getpIfPersonalInfo().gender}" />
+                <b:dataTableColumn  label="Date of Birth"   value="#{ls.getpIfPersonalInfo().dateOfBirth}" />
+                <b:dataTableColumn label="Address"   value="#{ls.getpIfPersonalInfo().address}" />
+                <b:dataTableColumn label="Email"   value="#{ls.getpIfPersonalInfo().email}" />
+                <b:dataTableColumn label="Mobile Number"   value="#{ls.getpIfPersonalInfo().mobile_number}" />
+            </b:dataTable>
+
+        </h:form>
+            </ui:define>
+          </ui:composition>
+    </h:body>
+</html>
+

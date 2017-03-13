@@ -1,9 +1,11 @@
 package com.mycompany.librarymanagementsystem.beans.book;
 
+import com.mycompany.librarymanagementsystem.dao.book.BookDao;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -109,4 +111,10 @@ public class Book implements Serializable {
         this.registration_date = registration_date;
     }
 
+    public List<Book> getBookLists() {
+
+        BookDao bd = new BookDao();
+        List<Book> bl = bd.getBookList();
+        return bl;
+    }
 }

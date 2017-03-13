@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
+    <h:head>
+        <title>Author Report</title>
+    </h:head>
+    <h:body>
+              <ui:composition template="/resources/template/login_template.xhtml">
+            <ui:define name="content">`
+        <b:dataTable value="#{authorDetails.authroLists}" var="ls" span="12" 
+                     page-length="10" pageLengthMenu="10,20,30"  scroll-x="false" select='true'
+                     >
+            <b:dataTableColumn label="Id" value="#{ls.id}" />
+            <b:dataTableColumn label="Name" value="#{ls.base1.name}" />
+            <b:dataTableColumn label="Address" value="#{ls.base1.adddress}" />
+            <b:dataTableColumn label="Mobile Number" value="#{ls.base1.phone}" />
+            <b:dataTableColumn label="Fax" value="#{ls.base1.fax}" />
+            <b:dataTableColumn label="Email" value="#{ls.base1.email}" />
+        </b:dataTable>
+            </ui:define>
+              </ui:composition>
+    </h:body>
+</html>
+

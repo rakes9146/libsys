@@ -4,93 +4,117 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui"
-      >
+
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Add Book</title>
     </h:head>
     <h:body>
-        <link href="resources/css/my.css" rel="stylesheet" type="text/css"/>
-        <div>
-            <h:form>
-                <b:container>
-                    <h1>Add New Book here</h1>
-                    <b:row>
-                        <b:inputText id="book_title" label="Book Title" render-label="true"
-                                     required="true" required-message="Please Enter book title"
-                                     ajax="true" update="msg1" large-screen="one-third" />
-                        <b:message id="msg1" for="book_title" span="4" />
-                    </b:row>
 
-                    <b:row>
-                        <b:selectMultiMenu id="author_name" label="Author"
-                                           render-label="true" required="true" large-screen="one-third"
-                                           required-message="Please Select Author" ajax="true" update="msg2"
-                                           radiobuttons="true" filter-placeholder="Enter Author Name"
-                                           enable-filtering="true" />
-                        <b:message id="msg2" for="author_name" span="4" />
-                    </b:row>
+        <ui:composition template="/resources/template/login_template.xhtml">
+            <ui:define name="content">`
 
-                    <b:row>
-                        <b:selectMultiMenu id="publisher_name" label="Publisher"
-                                           render-label="true" required="true" large-screen="one-third"
-                                           required-message="Please Select Publisher" ajax="true"
-                                           update="msg2" radiobuttons="true"
-                                           filter-placeholder="Enter Publisher Name" enable-filtering="true" />
-                        <b:message id="msg3" for="publisher_name" span="4" />
-                    </b:row>
+                <link href="resources/css/my.css" rel="stylesheet" type="text/css"/>
+                <div>
+                    <h:form>
+                        <b:container>
+                            <h1>Add New Book here</h1>
+                            <b:row>
+                                <b:inputText id="book_title" label="Book Title" render-label="true"
+                                             required="true" required-message="Please Enter book title"
+                                             ajax="true" update="msg1" large-screen="one-third" />
+                                <b:message id="msg1" for="book_title" span="4" />
+                            </b:row>
 
-                    <b:row>
-                        <b:selectMultiMenu id="supplier_name" label="Supplier"
-                                           render-label="true" required="true" large-screen="one-third"
-                                           required-message="Please Select Supplier" ajax="true"
-                                           update="msg4" radiobuttons="true"
-                                           filter-placeholder="Enter Supplier Name" enable-filtering="true" />
-                        <b:message id="msg4" for="author_name" span="4" />
-                    </b:row>
+                            <b:row>
+                                <b:selectOneMenu id="author_name" 
+                                                 />
+                                <b:message id="msg2" for="author_name" span="4" />
+                            </b:row>
 
-                    <b:row>
-                        <b:selectMultiMenu id="category_name" label="Category"
-                                           render-label="true" required="true" large-screen="one-third"
-                                           required-message="Please Select Category" ajax="true"
-                                           update="msg5" radiobuttons="true"
-                                           filter-placeholder="Enter Category Name" enable-filtering="true" />
-                        <b:message id="msg5" for="author_name" span="4" />
-                    </b:row>
+                            <b:row>
+                                <b:selectMultiMenu id="publisher_name" label="Publisher" value="#{book.book_title}"
+                                                   render-label="true" required="true" large-screen="one-third"
+                                                   required-message="Please Select Publisher" ajax="true"
+                                                   update="msg2" radiobuttons="true" largeScreen="one-third"
+                                                   filter-placeholder="Enter Publisher Name" enable-filtering="true" >
+
+                                    <f:selectItems   value="#{authorDetails.ls}" >
+                                    </f:selectItems>
+                                </b:selectMultiMenu>
+                                <b:message id="msg3" for="publisher_name" span="4" />
+                            </b:row>
+
+                            <b:row>
+                                <b:selectMultiMenu id="supplier_name" label="Supplier"
+                                                   render-label="true" required="true" large-screen="one-third"
+                                                   required-message="Please Select Supplier" ajax="true"
+                                                   update="msg4" radiobuttons="true"
+                                                   filter-placeholder="Enter Supplier Name" enable-filtering="true" />
+                                <b:message id="msg4" for="author_name" span="4" />
+                            </b:row>
+
+                            <b:row>
+                                <b:selectMultiMenu id="category_name" label="Category"
+                                                   render-label="true" required="true" large-screen="one-third"
+                                                   required-message="Please Select Category" ajax="true"
+                                                   update="msg5" radiobuttons="true"
+                                                   filter-placeholder="Enter Category Name" enable-filtering="true" />
+                                <b:message id="msg5" for="author_name" span="4" />
+                            </b:row>
 
 
-                    <b:row>
-                        <b:inputText id="book_isbn" label="Book Title" render-label="true"
-                                     required="true" required-message="Please Enter book ISBN"
-                                     ajax="true" update="msg6" large-screen="one-third" />
-                        <b:message id="msg6" for="book_isbn" span="4" />
-                    </b:row>
+                            <b:row>
+                                <b:inputText id="book_isbn" label="Book Title" render-label="true"
+                                             required="true" required-message="Please Enter book ISBN"
+                                             ajax="true" update="msg6" large-screen="one-third" />
+                                <b:message id="msg6" for="book_isbn" span="4" />
+                            </b:row>
 
-                    <b:row>
-                        <b:inputText id="book_price" label="Price" render-label="true"
-                                     required="true" required-message="Please Enter book  Price"
-                                     ajax="true" update="msg7" large-screen="one-third" />
-                        <b:message id="msg7" for="book_price" span="4" />
-                    </b:row>
+                            <b:row>
+                                <b:inputText id="book_price" label="Price" render-label="true"
+                                             required="true" required-message="Please Enter book  Price"
+                                             ajax="true" update="msg7" large-screen="one-third" />
+                                <b:message id="msg7" for="book_price" span="4" />
+                            </b:row>
 
-                    <b:row>
-                        <b:commandButton type="submit" value="Submit" ajax="true" process="@form" update="@form"
-                                         class="btn1" size="nm" span="1" 
-                                         />
-                        <b:commandButton type="reset" value="Reset" ajax="true" process="@form" update="@form"
-                                         class="btn2" size="nm" span="1"
-                                         />
-                    </b:row>
+                            <b:row>
+                                <b:commandButton type="submit" value="Submit" ajax="true" process="@form" update="@form"
+                                                 class="btn1" size="nm" span="1" 
+                                                 />
+                                <b:commandButton type="reset" value="Reset" ajax="true" process="@form" update="@form"
+                                                 class="btn2" size="nm" span="1"
+                                                 />
+                            </b:row>
 
-                      <b:row>
+                            <b:row>
                                 <br />
                             </b:row>
-                    <b:row>
-                        <b:alert severity="success" visible="#{baseam.visibility}"  ><h:outputText> </h:outputText></b:alert>
-                    </b:row>
-                </b:container>
-            </h:form>
-        </div>
+                            <b:row>
+                                <b:alert severity="success" visible="#{baseam.visibility}"  ><h:outputText> </h:outputText></b:alert>
+                            </b:row>
+                        </b:container>
+                    </h:form>
+                </div>
 
+                <b:row>
+                    <br />
+                </b:row>
+                <div>
+                    <b:container>
+                        <b:well large-screen="one-third">
+                            <h4><b:listLinks>
+                                    <b:navLink outcome="addauthor">If Author doesn't Exist Click here</b:navLink>
+                                    <b:navLink outcome="addpublisher">If Publisher doesn't Exist Click here</b:navLink>
+                                    <b:navLink outcome="addsupplier">If Supplier doesn't Exist Click here</b:navLink>
+                                    <b:navLink outcome="addcategory">If Category doesn't Exist Click here</b:navLink>
+                                </b:listLinks>
+                            </h4>
+                        </b:well>
+                    </b:container>
+                </div>
+            </ui:define>
+        </ui:composition>
 
     </h:body>
 </html>

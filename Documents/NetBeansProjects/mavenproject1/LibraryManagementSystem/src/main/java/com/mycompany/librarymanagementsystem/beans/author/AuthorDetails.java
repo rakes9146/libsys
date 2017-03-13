@@ -14,6 +14,10 @@ import javax.faces.bean.ManagedProperty;
 import javax.persistence.Embedded;
 import javax.persistence.Transient;
 import com.mycompany.librarymanagementsystem.beans.base.am.BaseAlertMesssage;
+import com.mycompany.librarymanagementsystem.beans.book.Book;
+import com.mycompany.librarymanagementsystem.dao.book.BookDao;
+import java.awt.event.ActionListener;
+import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.Entity;
@@ -39,6 +43,9 @@ public class AuthorDetails implements Serializable {
     @ManagedProperty(value = "#{baseam}")
     @Transient
     private BaseAlertMesssage bam;
+
+    @Transient
+    List<String> ls;
 
     public int getId() {
         return id;
@@ -79,8 +86,26 @@ public class AuthorDetails implements Serializable {
         this.base1.setName(null);
         this.base1.setAdddress(null);
         this.base1.setEmail(null);
-        this.base1.setPhone(0);
-        this.base1.setFax(0);
+        this.base1.setPhone(null);
+        this.base1.setFax(null);
 
     }
+
+    public List<AuthorDetails> getAuthroLists() {
+
+        AuthorDao bd = new AuthorDao();
+        List<AuthorDetails> bl = bd.getAuthorList();
+        return bl;
+    }
+
+    public List<String> getLs() {
+
+        AuthorDao ad = new AuthorDao();
+        ls = ad.getNames();
+        for (String s : ls) {
+            System.out.println(s);
+        }
+        return ls;
+    }
+
 }

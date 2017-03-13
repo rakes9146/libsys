@@ -2,8 +2,11 @@ package com.mycompany.librarymanagementsystem.beans.supplier;
 
 import com.mycompany.librarymanagementsystem.beans.base.am.BaseAlertMesssage;
 import com.mycompany.librarymanagementsystem.beans.base.vendor.VendorBase;
+import com.mycompany.librarymanagementsystem.beans.book.Book;
+import com.mycompany.librarymanagementsystem.dao.book.BookDao;
 import com.mycompany.librarymanagementsystem.dao.supplier.SupplierDao;
 import java.io.Serializable;
+import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.SessionScoped;
@@ -62,15 +65,22 @@ public class Supplier implements Serializable {
 
         bam.setVisibility("lg");
         bam.setMessage("Data Saved Successfully");
+        clear();
     }
 
     public void clear() {
 
         vb.setName(null);
         vb.setAdddress(null);
-        vb.setFax(0);
+        vb.setFax(null);
         vb.setEmail(null);
-        vb.setPhone(0);
+        vb.setPhone(null);
     }
 
+    public List<Supplier> getSupplierLists() {
+
+        SupplierDao sd = new SupplierDao();
+        List<Supplier> sl = sd.getSupplierList();
+        return sl;
+    }
 }

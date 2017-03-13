@@ -1,15 +1,12 @@
 package com.mycompany.librarymanagementsystem.beans.base.am;
 
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-
-import javax.enterprise.context.SessionScoped;
-import java.io.Serializable;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 
+
 @ManagedBean(name = "baseam")
-@SessionScoped
+@RequestScoped
 public class BaseAlertMesssage implements Serializable {
 
     String visibility = "xs";

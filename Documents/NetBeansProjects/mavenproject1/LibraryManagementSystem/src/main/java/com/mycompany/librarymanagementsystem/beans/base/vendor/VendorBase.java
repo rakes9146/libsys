@@ -5,8 +5,6 @@
  */
 package com.mycompany.librarymanagementsystem.beans.base.vendor;
 
-
-
 import java.io.Serializable;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -19,19 +17,16 @@ import javax.persistence.Id;
 
 @SessionScoped
 @Embeddable
-@ManagedBean(name="base")
-public class VendorBase implements Serializable{
+@ManagedBean(name = "base")
+public class VendorBase implements Serializable {
 
     private static final long serialVersionUID = 1L;
-   
+
     private String name;
     private String adddress;
-    private long phone;
-    private long fax;
+    private String phone;
+    private String fax;
     private String email;
-
-    
-   
 
     public String getName() {
         return name;
@@ -49,19 +44,19 @@ public class VendorBase implements Serializable{
         this.adddress = adddress;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public long getFax() {
+    public String getFax() {
         return fax;
     }
 
-    public void setFax(long fax) {
+    public void setFax(String fax) {
         this.fax = fax;
     }
 

@@ -7,8 +7,11 @@ package com.mycompany.librarymanagementsystem.beans.publisher;
 
 import com.mycompany.librarymanagementsystem.beans.base.am.BaseAlertMesssage;
 import com.mycompany.librarymanagementsystem.beans.base.vendor.VendorBase;
+import com.mycompany.librarymanagementsystem.beans.book.Book;
+import com.mycompany.librarymanagementsystem.dao.book.BookDao;
 import com.mycompany.librarymanagementsystem.dao.publisher.PublisherDao;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.persistence.Embedded;
@@ -89,7 +92,7 @@ public class Publisher implements Serializable {
         pd.save(this);
         bam.setVisibility("lg");
         bam.setMessage(" Data Saved");
-
+        clear();
     }
 
     public void clear() {
@@ -98,7 +101,15 @@ public class Publisher implements Serializable {
         this.p.setName(null);
         this.p.setEmail(null);
         this.p.setAdddress(null);
-        this.p.setPhone(0);
+        this.p.setPhone(null);
+        this.p.setFax(null);
 
+    }
+
+    public List<Publisher> getPublsiherLists() {
+
+        PublisherDao pd = new PublisherDao();
+        List<Publisher> pl = pd.getPublisherList();
+        return pl;
     }
 }

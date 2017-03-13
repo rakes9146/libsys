@@ -1,36 +1,56 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.mycompany.librarymanagementsystem.beans.staff;
 
 import com.mycompany.librarymanagementsystem.beans.base.am.BaseAlertMesssage;
 import com.mycompany.librarymanagementsystem.beans.base.person.PersonalInfo;
 import com.mycompany.librarymanagementsystem.dao.staff.StaffDao;
 
-import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
+
 import javax.faces.bean.ManagedProperty;
-import javax.faces.context.FacesContext;
+
 import javax.persistence.Embedded;
-import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
-@ManagedBean
-@SessionScoped
+import javax.enterprise.context.SessionScoped;
+import java.io.Serializable;
+import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.persistence.Entity;
+
 @Entity
+@SessionScoped
+@ManagedBean
 public class Staff implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int staff_id;
+    /*
+     @Embedded
+     @ManagedProperty(value = "#{p_info}")
+     public PersonalInfo personalInfo;
+     */
 
     @Embedded
     @ManagedProperty(value = "#{p_info}")
     private PersonalInfo personalInfo;
 
-    @Embedded
+    @Transient
     @ManagedProperty(value = "#{baseam}")
     BaseAlertMesssage bam;
+
+    public Staff() {
+
+    }
 
     public BaseAlertMesssage getBam() {
         return bam;
@@ -46,9 +66,6 @@ public class Staff implements Serializable {
         return staff_type;
     }
 
-    public Staff() {
-    }
-
     public PersonalInfo getPersonalInfo() {
         return personalInfo;
     }
@@ -57,6 +74,15 @@ public class Staff implements Serializable {
         this.personalInfo = personalInfo;
     }
 
+    /*
+     public PersonalInfo getPersonalInfo() {
+     return personalInfo;
+     }
+
+     public void setPersonalInfo(PersonalInfo personalInfo) {
+     this.personalInfo = personalInfo;
+     }
+     */
     public int getStaff_id() {
         return staff_id;
     }
@@ -79,7 +105,6 @@ public class Staff implements Serializable {
 
     }
 
-     
     public void clear() {
 
         this.personalInfo.setFirst_name(null);
@@ -94,5 +119,14 @@ public class Staff implements Serializable {
         this.personalInfo.setSecutiyt_answer(null);
         this.personalInfo.setRegistration_date(null);
         this.personalInfo.setAddress(null);
+        this.personalInfo.setId_proof_number(null);
+    }
+
+    public List<Staff> getStaffList() {
+
+        StaffDao sd = new StaffDao();
+        List<Staff> l = sd.getAuthorList();
+
+        return l;
     }
 }
