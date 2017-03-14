@@ -29,9 +29,8 @@ public class CategoryDao {
         }
 
     }
-    
-    
-       public List<Category> getCategoryList() {
+
+    public List<Category> getCategoryList() {
 
         List<Category> ls = new ArrayList<Category>();
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -46,8 +45,24 @@ public class CategoryDao {
             if (t != null) {
                 t.rollback();
             }
-                e.printStackTrace();
+            e.printStackTrace();
         }
         return ls;
     }
-}   
+
+    public List<String> getCategoryNames() {
+
+        ArrayList<String> ar = new ArrayList<>();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction t = null;
+        try {
+            t = session.beginTransaction();
+            ar = (ArrayList<String>) session.createSQLQuery("SELECT name FROM CATEGORY").list();
+            t.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ar;
+    }
+}

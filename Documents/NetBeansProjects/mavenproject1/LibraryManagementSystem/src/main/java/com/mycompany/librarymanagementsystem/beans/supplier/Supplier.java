@@ -31,6 +31,9 @@ public class Supplier implements Serializable {
     private VendorBase vb;
 
     @Transient
+    List<String> supplier_names;
+
+    @Transient
     @ManagedProperty(value = "#{baseam}")
     BaseAlertMesssage bam;
 
@@ -83,4 +86,13 @@ public class Supplier implements Serializable {
         List<Supplier> sl = sd.getSupplierList();
         return sl;
     }
+
+    public List<String> getSupplier_names() {
+
+        SupplierDao sd = new SupplierDao();
+        supplier_names = sd.getSupplierNames();
+
+        return supplier_names;
+    }
+
 }

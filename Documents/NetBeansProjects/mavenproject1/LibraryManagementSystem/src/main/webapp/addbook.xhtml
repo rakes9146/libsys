@@ -20,67 +20,88 @@
                         <b:container>
                             <h1>Add New Book here</h1>
                             <b:row>
-                                <b:inputText id="book_title" label="Book Title" render-label="true"
-                                             required="true" required-message="Please Enter book title"
+                                <b:inputText id="book_title" label="Book Title" render-label="true" value="#{book.book_title}"
+                                             required="true" required-message="Please Enter book title" 
                                              ajax="true" update="msg1" large-screen="one-third" />
                                 <b:message id="msg1" for="book_title" span="4" />
                             </b:row>
 
                             <b:row>
-                                <b:selectOneMenu id="author_name" 
-                                                 />
+                                <b:selectMultiMenu id="author_name" label="Author" value="#{book.author_name}"
+                                                   render-label="true" required="true" large-screen="one-third"
+                                                   required-message="Please Select Publisher" ajax="true"
+                                                   update="msg2" radiobuttons="true" largeScreen="one-third"
+                                                   filter-placeholder="Enter Publisher Name" enable-filtering="true" 
+                                                   >
+                                    <f:selectItems   value="#{authorDetails.ls}" var="dl" itemLabel="#{dl}" itemValue="#{dl}">
+                                    </f:selectItems>
+                                </b:selectMultiMenu>
                                 <b:message id="msg2" for="author_name" span="4" />
                             </b:row>
 
                             <b:row>
-                                <b:selectMultiMenu id="publisher_name" label="Publisher" value="#{book.book_title}"
+                                <b:selectMultiMenu id="publisher_name" label="Publisher" value="#{book.publisher_name}"
                                                    render-label="true" required="true" large-screen="one-third"
                                                    required-message="Please Select Publisher" ajax="true"
                                                    update="msg2" radiobuttons="true" largeScreen="one-third"
                                                    filter-placeholder="Enter Publisher Name" enable-filtering="true" >
-
-                                    <f:selectItems   value="#{authorDetails.ls}" >
+                                    <f:selectItems   value="#{publisher.publisher_names}" var="pl" itemLabel="#{pl}" itemValue="#{pl}">
                                     </f:selectItems>
+
                                 </b:selectMultiMenu>
                                 <b:message id="msg3" for="publisher_name" span="4" />
                             </b:row>
 
                             <b:row>
-                                <b:selectMultiMenu id="supplier_name" label="Supplier"
+                                <b:selectMultiMenu id="supplier_name" label="Supplier" value="#{book.supplier_name}"
                                                    render-label="true" required="true" large-screen="one-third"
                                                    required-message="Please Select Supplier" ajax="true"
                                                    update="msg4" radiobuttons="true"
-                                                   filter-placeholder="Enter Supplier Name" enable-filtering="true" />
+                                                   filter-placeholder="Enter Supplier Name" enable-filtering="true" >
+                                    <f:selectItems   value="#{supplier.supplier_names}" var="sl" itemLabel="#{sl}" itemValue="#{sl}">
+                                    </f:selectItems>
+                                </b:selectMultiMenu>
                                 <b:message id="msg4" for="author_name" span="4" />
                             </b:row>
 
                             <b:row>
-                                <b:selectMultiMenu id="category_name" label="Category"
+                                <b:selectMultiMenu id="category_name" label="Category" value="#{book.category_name}"
                                                    render-label="true" required="true" large-screen="one-third"
                                                    required-message="Please Select Category" ajax="true"
                                                    update="msg5" radiobuttons="true"
-                                                   filter-placeholder="Enter Category Name" enable-filtering="true" />
+                                                   filter-placeholder="Enter Category Name" enable-filtering="true" >
+                                    <f:selectItems   value="#{category.category_names}" var="cl" itemLabel="#{cl}" itemValue="#{cl}">
+                                    </f:selectItems>
+                                </b:selectMultiMenu>
                                 <b:message id="msg5" for="author_name" span="4" />
                             </b:row>
 
 
                             <b:row>
-                                <b:inputText id="book_isbn" label="Book Title" render-label="true"
+                                <b:inputText id="book_isbn" label="Book ISBN" render-label="true" value="#{book.book_isbn}"
                                              required="true" required-message="Please Enter book ISBN"
                                              ajax="true" update="msg6" large-screen="one-third" />
                                 <b:message id="msg6" for="book_isbn" span="4" />
                             </b:row>
 
                             <b:row>
-                                <b:inputText id="book_price" label="Price" render-label="true"
+                                <b:inputText id="book_price" label="Price" render-label="true" value="#{book.book_qunatity}"
                                              required="true" required-message="Please Enter book  Price"
                                              ajax="true" update="msg7" large-screen="one-third" />
                                 <b:message id="msg7" for="book_price" span="4" />
                             </b:row>
 
                             <b:row>
+                                <b:inputText id="description" label="Book Description" render-label="true" value="#{book.book_descrription}"
+                                             required="true" required-message="Please Enter book ISBN"
+                                             ajax="true" update="msg8" large-screen="one-third" />
+                                <b:message id="msg8" for="description" span="4" />
+                            </b:row>
+
+
+                            <b:row>
                                 <b:commandButton type="submit" value="Submit" ajax="true" process="@form" update="@form"
-                                                 class="btn1" size="nm" span="1" 
+                                                 class="btn1" size="nm" span="1" onclick="ajax:#{book.add()}"
                                                  />
                                 <b:commandButton type="reset" value="Reset" ajax="true" process="@form" update="@form"
                                                  class="btn2" size="nm" span="1"
@@ -91,7 +112,7 @@
                                 <br />
                             </b:row>
                             <b:row>
-                                <b:alert severity="success" visible="#{baseam.visibility}"  ><h:outputText> </h:outputText></b:alert>
+                                <b:alert severity="success" visible="#{book.bam.visibility}" ><h:outputText value="#{book.bam.message}"> </h:outputText></b:alert>
                             </b:row>
                         </b:container>
                     </h:form>

@@ -13,9 +13,11 @@
         <mapping class="com.mycompany.librarymanagementsystem.beans.author.AuthorDetails"></mapping>
         <mapping class="com.mycompany.librarymanagementsystem.beans.supplier.Supplier"></mapping>
         <mapping class="com.mycompany.librarymanagementsystem.beans.category.Category"></mapping>
-         <mapping class="com.mycompany.librarymanagementsystem.beans.publisher.Publisher"></mapping>
-         <mapping class="com.mycompany.librarymanagementsystem.beans.member.Member"></mapping>
-         <mapping class="com.mycompany.librarymanagementsystem.beans.staff.Staff"></mapping>
+        <mapping class="com.mycompany.librarymanagementsystem.beans.publisher.Publisher"></mapping>
+        <mapping class="com.mycompany.librarymanagementsystem.beans.member.Member"></mapping>
+        <mapping class="com.mycompany.librarymanagementsystem.beans.staff.Staff"></mapping>
+      
+           <mapping class="com.mycompany.librarymanagementsystem.beans.book.Book"></mapping>
          
     </session-factory>
   

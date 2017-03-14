@@ -50,4 +50,19 @@ public class PublisherDao {
         return ls;
     }
 
+    public List<String> getPublisherName() {
+
+        ArrayList<String> ar = new ArrayList<>();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction t = null;
+        try {
+            t = session.beginTransaction();
+            ar = (ArrayList<String>) session.createSQLQuery("SELECT name FROM publisher").list();
+            t.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return ar;
+    }
 }

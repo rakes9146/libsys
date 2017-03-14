@@ -14,6 +14,22 @@ public class BookDao {
     public BookDao() {
     }
 
+    public void saveBook(Book bk) {
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction t = null;
+        try {
+            t = session.beginTransaction();
+            session.save(bk);
+            t.commit();
+
+        } catch (Exception e) {
+            if (t != null) {
+                t.rollback();
+            }
+        }
+    }
+
     public List<Book> getBookList() {
 
         List<Book> ls = new ArrayList<Book>();

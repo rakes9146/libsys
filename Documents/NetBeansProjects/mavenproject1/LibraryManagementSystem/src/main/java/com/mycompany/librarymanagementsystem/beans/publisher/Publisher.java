@@ -36,6 +36,9 @@ public class Publisher implements Serializable {
     private int edition;
 
     @Transient
+    List<String> publisher_names;
+
+    @Transient
     private int[] years = {2001, 2002, 2003, 2004, 2005, 2006};
 
     @ManagedProperty(value = "#{baseam}")
@@ -112,4 +115,12 @@ public class Publisher implements Serializable {
         List<Publisher> pl = pd.getPublisherList();
         return pl;
     }
+
+    public List<String> getPublisher_names() {
+        PublisherDao pd = new PublisherDao();
+        publisher_names = pd.getPublisherName();
+        return publisher_names;
+    }
+
+   
 }

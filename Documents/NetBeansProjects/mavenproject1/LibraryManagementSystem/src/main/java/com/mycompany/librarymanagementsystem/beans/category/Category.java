@@ -32,6 +32,9 @@ public class Category implements Serializable {
     private String name;
     private String description;
 
+    @Transient
+    private List<String> category_names;
+
     public int getId() {
         return id;
     }
@@ -84,6 +87,13 @@ public class Category implements Serializable {
         CategoryDao cd = new CategoryDao();
         List<Category> cl = cd.getCategoryList();
         return cl;
+    }
+
+    public List<String> getCategory_names() {
+
+        CategoryDao cd = new CategoryDao();
+        category_names = cd.getCategoryNames();
+        return category_names;
     }
 
 }

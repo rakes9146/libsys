@@ -48,4 +48,20 @@ public class SupplierDao {
         }
         return ls;
     }
+       
+       public List<String> getSupplierNames() {
+
+        ArrayList<String> ar = new ArrayList<>();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction t = null;
+        try {
+            t = session.beginTransaction();
+            ar = (ArrayList<String>) session.createSQLQuery("SELECT name FROM supplier").list();
+            t.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ar;
+    }
 }
