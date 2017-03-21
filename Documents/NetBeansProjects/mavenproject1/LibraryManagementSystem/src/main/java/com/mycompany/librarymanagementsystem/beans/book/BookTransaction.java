@@ -1,21 +1,24 @@
 package com.mycompany.librarymanagementsystem.beans.book;
 
+import com.mycompany.librarymanagementsystem.beans.base.am.BaseAlertMesssage;
+import com.mycompany.librarymanagementsystem.dao.book.BookTransactionDao;
+import com.mycompany.librarymanagementsystem.dao.member.MemberDao;
 import java.io.Serializable;
-import java.sql.Date;
-import javax.inject.Named;
-import javax.enterprise.context.Dependent;
+import java.util.Date;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
-@Table(name = "book_transaction")
 @SessionScoped
+@ManagedBean
+@Entity(name = "book_transaction")
 public class BookTransaction implements Serializable {
 
     @Id
@@ -25,7 +28,7 @@ public class BookTransaction implements Serializable {
     private int member_id;
 
     @Temporal(TemporalType.DATE)
-    private Date issue_date;
+    private Date issue_date = new java.util.Date();
 
     @Temporal(TemporalType.DATE)
     private Date return_date;
@@ -34,6 +37,10 @@ public class BookTransaction implements Serializable {
     private Date actualReturn_Date;
 
     private double late_fine;
+
+    @Transient
+    @ManagedProperty(value = "#{baseam}")
+    BaseAlertMesssage bam;
 
     public BookTransaction() {
     }
@@ -92,6 +99,36 @@ public class BookTransaction implements Serializable {
 
     public void setLate_fine(double late_fine) {
         this.late_fine = late_fine;
+    }
+
+    public BaseAlertMesssage getBam() {
+        return bam;
+    }
+
+    public void setBam(BaseAlertMesssage bam) {
+        this.bam = bam;
+    }
+
+    public void add() {
+        MemberDao md = new MemberDao();
+        BookTransactionDao bdo = new BookTransactionDao();
+
+//        if (md.isAvailable(this.member_id)) {
+        bdo.addTransaction(this);
+        bam.setVisibility("lg");
+        bam.setMessage("Book Alloted Successfully");
+        clear();
+//        } else {
+//            bam.setVisibility("lg");
+//            bam.setMessage("Id Doesn't Exist");
+//        }
+
+    }
+
+    public void clear() {
+
+        this.setBook_id(0);
+        this.setMember_id(0);
     }
 
 }

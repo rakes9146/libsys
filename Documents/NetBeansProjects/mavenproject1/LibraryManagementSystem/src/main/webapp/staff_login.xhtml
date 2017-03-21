@@ -12,6 +12,7 @@
     <h:body>
         <ui:composition template="/resources/template/template_layout.xhtml">
             <ui:define name="content">
+                <link href="resources/css/my.css" rel="stylesheet" type="text/css"/>
                 <h:form>
                     <div>
                         <b:container>
@@ -40,10 +41,10 @@
                             </b:row>
 
                             <b:row>
-                                <b:commandButton  type="submit" value="Submit" 
-                                                  action="#{loginBean.validate()}" 
+                                <b:commandButton  type="submit" value="Submit"  class="btn1" size="nm"
+                                                  action="#{loginBean.validate()}" span="1"
                                                   /> 
-                                <b:commandButton type="reset" value="Reset" ajax="true" process="@form" update="@form" />  
+                                <b:commandButton class="btn2" type="reset" value="Reset" ajax="true" span="1" process="@form" update="@form"  size="nm"/>  
                             </b:row>
 
                         </b:container>

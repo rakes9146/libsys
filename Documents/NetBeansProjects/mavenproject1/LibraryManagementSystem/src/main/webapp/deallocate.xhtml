@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <div>
+            <b:container>
+                <h1>Deallocate Book</h1>
+                <h:form>
+                    <b:row>
+                        <b:inputText id="book_id2" large-screen="one-third" required="true" required-message="Please Enter book ID "
+                                     label="Please Enter book ID" value="#{bookTransaction.book_id}" update="msg5" ajax="true" maxlength="5"
+                                     >
+                            <b:message for="book_id2" id="msg5" span="4" />
+                        </b:inputText>
+                    </b:row>
+
+                    <b:row>
+                        <div>
+                            <b:dateTimePicker render-label="true" label="Date" id="return_date" required="true" required-message="Please Enter your Date of Birth"
+                                              large-screen="one-third" allow-input-toggle="true" update="msg6" ajax="true" value="#{bookTransaction.actualReturn_Date}"
+                                              show-date="true" show-time="false" mode="plain" side-by-side="true" format="DD/MM/YYYY"
+                                              toolbar-placement="top" tooltip-position="auto right" 
+                                              >
+                            </b:dateTimePicker>
+                            <b:message id="msg6" for="return_date" span="4" />
+                        </div>
+                    </b:row>
+
+                    <b:row>
+                        <b:commandButton type="submit" value="Deallocate" ajax="true" process="@form" update="@form" 
+                                         class="btn1" size="nm" span="1" onclick="ajax:bookTransaction.add()" rendered="true"
+                                         />
+                        <b:commandButton type="reset" value="Reset" ajax="true" process="@form" update="@form"
+                                         class="btn2" size="nm" span="1"
+                                         />
+                    </b:row>
+
+
+                    <b:row>
+                        <br />
+                    </b:row>
+                    <b:row>
+                        <b:alert severity="success" visible="#{bookTransaction.bam.visibility}"  span="4"><h:outputText value="#{bookTransaction.bam.message}"> </h:outputText></b:alert>
+                    </b:row>
+
+                </h:form>
+            </b:container>
+        </div>
+
+    </h:body>
+</html>
+

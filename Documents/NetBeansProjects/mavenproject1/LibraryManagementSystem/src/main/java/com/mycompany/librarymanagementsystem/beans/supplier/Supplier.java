@@ -4,6 +4,7 @@ import com.mycompany.librarymanagementsystem.beans.base.am.BaseAlertMesssage;
 import com.mycompany.librarymanagementsystem.beans.base.vendor.VendorBase;
 import com.mycompany.librarymanagementsystem.beans.book.Book;
 import com.mycompany.librarymanagementsystem.dao.book.BookDao;
+import com.mycompany.librarymanagementsystem.dao.publisher.PublisherDao;
 import com.mycompany.librarymanagementsystem.dao.supplier.SupplierDao;
 import java.io.Serializable;
 import java.util.List;
@@ -20,7 +21,7 @@ import javax.persistence.Transient;
 
 @ManagedBean
 @SessionScoped
-@Entity
+@Entity(name="supplier")
 public class Supplier implements Serializable {
 
     @Id
@@ -93,6 +94,25 @@ public class Supplier implements Serializable {
         supplier_names = sd.getSupplierNames();
 
         return supplier_names;
+    }
+
+    public void updateDetails() {
+
+        SupplierDao ad = new SupplierDao();
+        ad.update(this.getVb().getUpdated_value(), this.id, this.getVb().getOption());
+        this.bam.setVisibility("lg");
+        this.bam.setMessage(id + " Updated Successfully");
+        this.vb.setUpdated_value(null);
+        this.setId(0);
+    }
+
+    public void deleteAuthor() {
+
+        SupplierDao ad = new SupplierDao();
+        ad.deleteAuthor(this.id);
+        this.bam.setVisibility("lg");
+        this.bam.setMessage(id + " Delete Successfully");
+        this.setId(0);
     }
 
 }

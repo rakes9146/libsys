@@ -8,6 +8,7 @@ package com.mycompany.librarymanagementsystem.beans.publisher;
 import com.mycompany.librarymanagementsystem.beans.base.am.BaseAlertMesssage;
 import com.mycompany.librarymanagementsystem.beans.base.vendor.VendorBase;
 import com.mycompany.librarymanagementsystem.beans.book.Book;
+import com.mycompany.librarymanagementsystem.dao.author.AuthorDao;
 import com.mycompany.librarymanagementsystem.dao.book.BookDao;
 import com.mycompany.librarymanagementsystem.dao.publisher.PublisherDao;
 import java.io.Serializable;
@@ -22,7 +23,7 @@ import javax.persistence.Id;
 import javax.persistence.Transient;
 
 @ManagedBean
-@Entity
+@Entity(name="publisher")
 public class Publisher implements Serializable {
 
     @Id
@@ -122,5 +123,23 @@ public class Publisher implements Serializable {
         return publisher_names;
     }
 
-   
+    public void updateDetails() {
+
+        PublisherDao ad = new PublisherDao();
+        ad.update(this.getP().getUpdated_value(), this.id, this.getP().getOption());
+        this.bam.setVisibility("lg");
+        this.bam.setMessage(id + " Updated Successfully");
+        this.p.setUpdated_value(null);
+        this.setId(0);
+    }
+
+    public void deleteAuthor() {
+
+        PublisherDao ad = new PublisherDao();
+        ad.deleteAuthor(this.id);
+        this.bam.setVisibility("lg");
+        this.bam.setMessage(id + " Delete Successfully");
+        this.setId(0);
+    }
+
 }

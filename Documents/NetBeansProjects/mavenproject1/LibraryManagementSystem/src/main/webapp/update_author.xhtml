@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+
+
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+
+        <ui:composition template="/resources/template/login_template.xhtml">
+            <ui:define name="content">
+                <link href="resources/css/my.css" rel="stylesheet" type="text/css"/>
+                <b:container>
+                    <h1>Update Author Details</h1>
+                    <h:form>
+
+                        <b:row>
+                            <b:selectOneMenu label="What you want to Update" large-screen="one-third" id="option"
+                                             update="msg1" ajax="true" value="#{authorDetails.base1.option}"
+                                             >
+                                <f:selectItem itemLabel="Address" itemValue="address" />
+                                <f:selectItem itemLabel="Mobile Number" itemValue="mobno" />
+                                <f:selectItem itemLabel="Fax" itemValue="fax" />
+                                <f:selectItem itemLabel="Email" itemValue="email" />
+                            </b:selectOneMenu>
+                            <b:message for="option" id="msg1" span="4"/>
+                        </b:row>
+
+                        <b:row>
+
+                            <b:inputText id="id_value" large-screen="one-third" required="true" required-message="Please Enter ID "
+                                         label="Please Enter ID" value="#{authorDetails.id}" update="msg5" ajax="true" maxlength="5"
+                                         >
+
+                            </b:inputText>
+
+                            <b:message for="id_value" id="msg5" span="4" />    
+
+                        </b:row>
+                        <b:row>
+                            <b:inputText id="new_value" large-screen="one-third" required="true" required-message="Please Enter Updated Vallue"
+                                         update="msg2" label="Please Enter Updated Value" value="#{authorDetails.base1.updated_value}" ajax="true"
+                                         maxlength="40" >
+                            </b:inputText>
+                            <b:message for="new_value" id="msg2" span="4" />
+                        </b:row>
+
+                        <b:row>
+                            <b:commandButton ajax="true" span="1" size="nm" process="@form" update="@form"
+                                             type="submit" class="btn1" value="Update" onclick="ajax:authorDetails.updateDetails()"
+                                             />  
+                            <b:commandButton ajax="true" span="1" size="nm" process="@form" update="@form"
+                                             type="reset" value="Reset" class="btn2"
+                                             />
+
+                        </b:row>
+                        <b:row>
+                            <br />
+                            <br />
+                        </b:row>
+                        <b:row>
+                            <b:alert severity="success" visible="#{authorDetails.bam.visibility}" span="4"><h:outputText value="#{authorDetails.bam.message}"></h:outputText></b:alert>
+                        </b:row>
+                        `  </h:form>
+                </b:container>
+
+                <b:container>
+                    <h:form>
+                        <h1>Delete Author Details</h1>
+                        <b:row>
+
+                            <b:inputText id="id_value" large-screen="one-third" required="true" required-message="Please Enter ID "
+                                         label="Please Enter ID" value="#{authorDetails.id}" update="msg5" ajax="true" maxlength="5"
+                                         >
+
+                            </b:inputText>
+
+                            <b:message for="id_value" id="msg5" span="4" />    
+
+                        </b:row>
+                        <b:row>
+                            <b:commandButton ajax="true" span="1" size="nm" process="@form" update="@form"
+                                             type="submit" class="btn1" value="Delete" onclick="ajax:authorDetails.deleteAuthor()"
+                                             />  
+                            <b:commandButton ajax="true" span="1" size="nm" process="@form" update="@form"
+                                             type="reset" value="Reset" class="btn2"
+                                             />
+
+                        </b:row>
+                        <b:row>
+                            <br />
+                            <br />
+                        </b:row>
+                        <b:row>
+                            <b:alert severity="success" visible="#{authorDetails.bam.visibility}" span="4"><h:outputText value="#{authorDetails.bam.message}"></h:outputText></b:alert>
+                        </b:row>
+                        `  </h:form>
+                </b:container>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>
+

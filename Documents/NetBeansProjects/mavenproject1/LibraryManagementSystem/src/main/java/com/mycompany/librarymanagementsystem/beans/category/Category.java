@@ -91,6 +91,7 @@ public class Category implements Serializable {
 
     public List<String> getCategory_names() {
 
+        
         CategoryDao cd = new CategoryDao();
         category_names = cd.getCategoryNames();
         return category_names;

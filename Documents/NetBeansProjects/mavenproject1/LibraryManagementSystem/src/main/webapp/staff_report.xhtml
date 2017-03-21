@@ -14,10 +14,10 @@
                 <b:row>
                     <br />
                 </b:row>
-             
+
                 <b:dataTable  value="#{staff.staffList}" var="ls"   page-length="10" page-length-menu="10,20,30"
-                             striped="true" span="12" select="true" scroll-x="false"
-                             >
+                              striped="true" span="12" select="true" scroll-x="false"
+                              >
                     <b:dataTableColumn label="Member Id" value="#{ls.staff_id}" />
                     <b:dataTableColumn label="First Name" value="#{ls.personalInfo.first_name}" />
                     <b:dataTableColumn label="Middle Name"  value="#{ls.personalInfo.middle_name}" />
@@ -30,10 +30,10 @@
                     <b:dataTableColumn label="Id Type"   value="#{ls.personalInfo.id_proof_type }" />
                     <b:dataTableColumn label="Id Number"   value="#{ls.personalInfo.id_proof_number }" />
                 </b:dataTable>
-            
-                </ui:define>
+
+            </ui:define>
         </ui:composition>
-  
+
     </h:body>
 </html>
 

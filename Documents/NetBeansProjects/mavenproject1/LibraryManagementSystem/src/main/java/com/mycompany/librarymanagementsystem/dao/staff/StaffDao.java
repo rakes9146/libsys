@@ -27,6 +27,9 @@ public class StaffDao {
                 t.rollback();
             }
             e.printStackTrace();
+        }finally{
+         session.close();
+         session.flush();
         }
 
     }
@@ -47,6 +50,9 @@ public class StaffDao {
                 t.rollback();
             }
             e.printStackTrace();
+        }finally{
+         session.close();
+         session.flush();
         }
         return ls;
     }

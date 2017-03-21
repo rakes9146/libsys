@@ -107,7 +107,7 @@ public class Book implements Serializable {
         return author_name;
     }
 
-    public void setAuthor_name(String author_author) {
+    public void setAuthor_name(String author_name) {
         this.author_name = author_name;
     }
 
@@ -146,7 +146,7 @@ public class Book implements Serializable {
         this.setAuthor_name(null);
         this.setBook_descrription(null);
         this.setBook_isbn(null);
-        this.setBook_price(0.0F);
+        this.setBook_price(0);
         this.setBook_title(null);
         this.setPublisher_name(null);
         this.setSupplier_name(null);

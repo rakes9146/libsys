@@ -18,7 +18,7 @@
         <mapping class="com.mycompany.librarymanagementsystem.beans.staff.Staff"></mapping>
       
            <mapping class="com.mycompany.librarymanagementsystem.beans.book.Book"></mapping>
-         
+           <mapping class="com.mycompany.librarymanagementsystem.beans.book.BookTransaction"></mapping>  
     </session-factory>
   
   

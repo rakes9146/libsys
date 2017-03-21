@@ -16,8 +16,9 @@
 
                 <link href="resources/css/my.css" rel="stylesheet" type="text/css"/>
                 <div>
-                    <h:form>
-                        <b:container>
+                    <b:container>
+                        <h:form>
+
                             <h1>Add New Book here</h1>
                             <b:row>
                                 <b:inputText id="book_title" label="Book Title" render-label="true" value="#{book.book_title}"
@@ -29,11 +30,11 @@
                             <b:row>
                                 <b:selectMultiMenu id="author_name" label="Author" value="#{book.author_name}"
                                                    render-label="true" required="true" large-screen="one-third"
-                                                   required-message="Please Select Publisher" ajax="true"
+                                                   required-message="Please Select Publisher" 
                                                    update="msg2" radiobuttons="true" largeScreen="one-third"
                                                    filter-placeholder="Enter Publisher Name" enable-filtering="true" 
                                                    >
-                                    <f:selectItems   value="#{authorDetails.ls}" var="dl" itemLabel="#{dl}" itemValue="#{dl}">
+                                    <f:selectItems    value="#{authorDetails.ls}" var="dl" itemLabel="#{dl}" itemValue="#{dl}">
                                     </f:selectItems>
                                 </b:selectMultiMenu>
                                 <b:message id="msg2" for="author_name" span="4" />
@@ -42,7 +43,7 @@
                             <b:row>
                                 <b:selectMultiMenu id="publisher_name" label="Publisher" value="#{book.publisher_name}"
                                                    render-label="true" required="true" large-screen="one-third"
-                                                   required-message="Please Select Publisher" ajax="true"
+                                                   required-message="Please Select Publisher" 
                                                    update="msg2" radiobuttons="true" largeScreen="one-third"
                                                    filter-placeholder="Enter Publisher Name" enable-filtering="true" >
                                     <f:selectItems   value="#{publisher.publisher_names}" var="pl" itemLabel="#{pl}" itemValue="#{pl}">
@@ -55,7 +56,7 @@
                             <b:row>
                                 <b:selectMultiMenu id="supplier_name" label="Supplier" value="#{book.supplier_name}"
                                                    render-label="true" required="true" large-screen="one-third"
-                                                   required-message="Please Select Supplier" ajax="true"
+                                                   required-message="Please Select Supplier" 
                                                    update="msg4" radiobuttons="true"
                                                    filter-placeholder="Enter Supplier Name" enable-filtering="true" >
                                     <f:selectItems   value="#{supplier.supplier_names}" var="sl" itemLabel="#{sl}" itemValue="#{sl}">
@@ -67,7 +68,7 @@
                             <b:row>
                                 <b:selectMultiMenu id="category_name" label="Category" value="#{book.category_name}"
                                                    render-label="true" required="true" large-screen="one-third"
-                                                   required-message="Please Select Category" ajax="true"
+                                                   required-message="Please Select Category" 
                                                    update="msg5" radiobuttons="true"
                                                    filter-placeholder="Enter Category Name" enable-filtering="true" >
                                     <f:selectItems   value="#{category.category_names}" var="cl" itemLabel="#{cl}" itemValue="#{cl}">
@@ -80,7 +81,7 @@
                             <b:row>
                                 <b:inputText id="book_isbn" label="Book ISBN" render-label="true" value="#{book.book_isbn}"
                                              required="true" required-message="Please Enter book ISBN"
-                                             ajax="true" update="msg6" large-screen="one-third" />
+                                             update="msg6" large-screen="one-third" />
                                 <b:message id="msg6" for="book_isbn" span="4" />
                             </b:row>
 
@@ -100,40 +101,29 @@
 
 
                             <b:row>
-                                <b:commandButton type="submit" value="Submit" ajax="true" process="@form" update="@form"
-                                                 class="btn1" size="nm" span="1" onclick="ajax:#{book.add()}"
+                                <b:commandButton type="submit" value="Submit" ajax="true" process="@form" update="@form" 
+                                                 class="btn1" size="nm" span="1" onclick="ajax:book.add()" rendered="true"
                                                  />
                                 <b:commandButton type="reset" value="Reset" ajax="true" process="@form" update="@form"
                                                  class="btn2" size="nm" span="1"
                                                  />
                             </b:row>
 
+
                             <b:row>
                                 <br />
                             </b:row>
                             <b:row>
-                                <b:alert severity="success" visible="#{book.bam.visibility}" ><h:outputText value="#{book.bam.message}"> </h:outputText></b:alert>
+                                <b:alert severity="success" visible="#{book.bam.visibility}"  span="4"><h:outputText value="#{book.bam.message}"> </h:outputText></b:alert>
                             </b:row>
-                        </b:container>
-                    </h:form>
+                        </h:form>
+                    </b:container>
                 </div>
 
                 <b:row>
                     <br />
                 </b:row>
-                <div>
-                    <b:container>
-                        <b:well large-screen="one-third">
-                            <h4><b:listLinks>
-                                    <b:navLink outcome="addauthor">If Author doesn't Exist Click here</b:navLink>
-                                    <b:navLink outcome="addpublisher">If Publisher doesn't Exist Click here</b:navLink>
-                                    <b:navLink outcome="addsupplier">If Supplier doesn't Exist Click here</b:navLink>
-                                    <b:navLink outcome="addcategory">If Category doesn't Exist Click here</b:navLink>
-                                </b:listLinks>
-                            </h4>
-                        </b:well>
-                    </b:container>
-                </div>
+
             </ui:define>
         </ui:composition>
 

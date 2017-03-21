@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      >
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/resources/template/login_template.xhtml">
+            <ui:define name="content">`
+                <div>
+                    <b:container>
+                        <h1>Allocate Book</h1>
+                        <h:form>
+                            <b:row>
+                                <b:inputText id="book_id" large-screen="one-third" required="true" required-message="Please Enter Book ID "
+                                             label="Please Enter Book ID" value="#{bookTransaction.book_id}" update="msg1" ajax="true" maxlength="5"
+                                             />
+                                <b:message for="book_id" id="msg1" span="4" />
+                            </b:row>
+                            <b:row>
+                                <b:inputText id="student_id" large-screen="one-third" required="true" required-message="Please Enter ID "
+                                             label="Please Enter Student ID" value="#{bookTransaction.member_id}" update="msg2" ajax="true" maxlength="5"
+                                             >
+
+                                </b:inputText>
+                                <b:message for="student_id" id="msg2" span="4" />
+                            </b:row>
+                            <b:row>
+                                <b:commandButton type="submit" value="Submit" ajax="true" process="@form" update="@form" 
+                                                 class="btn1" size="nm" span="1" onclick="ajax:bookTransaction.add()" rendered="true"
+                                                 />
+                                <b:commandButton type="reset" value="Reset" ajax="true" process="@form" update="@form"
+                                                 class="btn2" size="nm" span="1"
+                                                 />
+                            </b:row>
+
+
+                            <b:row>
+                                <br />
+                            </b:row>
+                            <b:row>
+                                <b:alert severity="success" visible="#{bookTransaction.bam.visibility}"  span="4"><h:outputText value="#{bookTransaction.bam.message}"> </h:outputText></b:alert>
+                            </b:row>
+                        </h:form>
+                    </b:container>
+                </div>
+
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
