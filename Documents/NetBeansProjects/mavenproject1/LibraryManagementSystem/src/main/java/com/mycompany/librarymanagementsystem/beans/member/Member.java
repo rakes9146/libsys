@@ -3,22 +3,14 @@ package com.mycompany.librarymanagementsystem.beans.member;
 import com.mycompany.librarymanagementsystem.beans.base.am.BaseAlertMesssage;
 import com.mycompany.librarymanagementsystem.beans.base.person.PersonalInfo;
 import com.mycompany.librarymanagementsystem.dao.member.MemberDao;
+import com.mycompany.librarymanagementsystem.dao.staff.StaffDao;
 import com.mycompany.librarymanagementsystem.passwordgenerator.EmailDispatcher;
 import com.mycompany.librarymanagementsystem.passwordgenerator.PasswordGenerator;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,9 +18,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
-
 @Entity
-@javax.enterprise.context.SessionScoped
+@SessionScoped
 @ManagedBean
 public class Member implements Serializable {
 
@@ -40,7 +31,10 @@ public class Member implements Serializable {
     @ManagedProperty(value = "#{p_info}")
     private PersonalInfo pIfPersonalInfo;
 
-    @Transient
+    private String option;
+  
+    private String updated_value;
+    
     @ManagedProperty(value = "#{baseam}")
     private BaseAlertMesssage bam;
 
@@ -63,6 +57,7 @@ public class Member implements Serializable {
         this.pIfPersonalInfo = pIfPersonalInfo;
     }
 
+       @javax.persistence.Transient
     public BaseAlertMesssage getBam() {
         return bam;
     }
@@ -79,13 +74,40 @@ public class Member implements Serializable {
         this.password = password;
     }
 
+     @Transient
+    public String getOption() {
+        return option;
+    }
+
+    public void setOption(String option) {
+        this.option = option;
+    }
+
+      @Transient
+    public String getUpdated_value() {
+        return updated_value;
+    }
+
+    public void setUpdated_value(String updated_value) {
+        this.updated_value = updated_value;
+    }
+    
     public void add() {
 
+        EmailDispatcher ed = new EmailDispatcher();
+        this.genPas();
         try {
+
             MemberDao md = new MemberDao();
 
-//            genPas();
             md.save(this);
+
+            try {
+                ed.dispatchEmail(this.getpIfPersonalInfo().getFirst_name(), this.getpIfPersonalInfo().getEmail(), Integer.toString(this.getMember_id()), this.password);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            System.out.println("Email MEthod Finished");
             bam.setVisibility("lg");
             bam.setMessage(member_id + "Data Saved Succesffyly and Email Sent to Student");
             clear();
@@ -113,11 +135,13 @@ public class Member implements Serializable {
         this.pIfPersonalInfo.setSecutiyt_answer(null);
         this.pIfPersonalInfo.setRegistration_date(null);
         this.pIfPersonalInfo.setAddress(null);
+        this.pIfPersonalInfo.setId_proof_number(null);
     }
 
     public void genPas() {
         PasswordGenerator pg = new PasswordGenerator();
         this.setPassword(pg.generatePassword(this.pIfPersonalInfo.getId_proof_number(), this.pIfPersonalInfo.getDateOfBirth()));
+
     }
 
     /*
@@ -157,6 +181,25 @@ public class Member implements Serializable {
         MemberDao md = new MemberDao();
         List<Member> ls = md.memberList();
         return ls;
+    }
+
+    public void updateDetails() {
+
+        MemberDao ad = new MemberDao();
+        ad.update(this.getUpdated_value(), this.member_id, this.getOption());
+        this.bam.setVisibility("lg");
+        this.bam.setMessage(this.member_id + " Updated Successfully");
+        this.setUpdated_value(null);
+        this.setMember_id(0);
+    }
+
+    public void deleteAuthor() {
+
+        MemberDao ad = new MemberDao();
+        ad.delete(member_id);
+        this.bam.setVisibility("lg");
+        this.bam.setMessage(this.member_id + " Delete Successfully");
+        this.setMember_id(0);
     }
 
 }

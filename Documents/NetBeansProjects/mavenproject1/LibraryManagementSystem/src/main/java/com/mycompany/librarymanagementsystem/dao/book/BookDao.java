@@ -73,4 +73,93 @@ public class BookDao {
         return flag;
     }
 
+    public void updateBooks(int id, String update_type, String update_value) {
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+
+        try {
+
+            transaction = session.beginTransaction();
+            if ("quantity".equals(update_type)) {
+
+                Query query = session.createQuery("UPDATE book SET book_qunatity = :quantity WHERE book_id = :id");
+                query.setParameter("quantity", update_value);
+                query.setParameter("id", id);
+                int r = query.executeUpdate();
+                transaction.commit();
+                System.out.println("Result " + r);
+
+            } else if ("price".equals(update_type)) {
+
+                Query query = session.createQuery("UPDATE book SET book_price = :book_price WHERE book_id = :book_id");
+                query.setParameter("book_price", Float.parseFloat(update_value));
+                query.setParameter("book_id", id);
+                int r = query.executeUpdate();
+                transaction.commit();
+                System.out.println("Result " + r);
+
+            } else if ("isbn".equals(update_type)) {
+
+                Query query = session.createQuery("UPDATE book SET book_isbn = :book_isbn WHERE book_id = :book_id");
+                query.setParameter("book_isbn", update_value);
+                query.setParameter("book_id", id);
+                int r = query.executeUpdate();
+                transaction.commit();
+                System.out.println("Result " + r);
+            } else if ("description".equals(update_type)) {
+
+                Query query = session.createQuery("UPDATE book SET book_descrription = :book_description WHERE book_id = :book_id");
+                query.setParameter("book_description", update_value);
+                query.setParameter("book_id", id);
+                int r = query.executeUpdate();
+                transaction.commit();
+                System.out.println("Result " + r);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("Execute");
+    }
+
+    public void delete(int id) {
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("DELETE FROM book WHERE book_id = :id");
+            query.setParameter("id", id);
+            int r = query.executeUpdate();
+            transaction.commit();
+            System.out.println("Result " + r);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean isExist(int id) {
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction t = null;
+        boolean flag = false;
+        try {
+            t = session.beginTransaction();
+
+            Query query = session.createQuery("SELECT count(*) FROM book WHERE book_id = :id");
+            query.setParameter("id", id);
+
+            Long result = (Long) query.uniqueResult();
+            System.out.println("Result is " + result);
+            if (result > 0) {
+                flag = true;
+            } else {
+                flag = false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
 }

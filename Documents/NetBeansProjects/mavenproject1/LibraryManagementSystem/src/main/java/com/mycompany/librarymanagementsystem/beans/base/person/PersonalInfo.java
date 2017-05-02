@@ -11,6 +11,7 @@ import javax.faces.bean.SessionScoped;
 import javax.persistence.Embeddable;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 
 @Embeddable
@@ -37,6 +38,9 @@ public class PersonalInfo implements Serializable {
     private String security_question;
     private String secutiyt_answer;
 
+   
+   
+    
     public String getFirst_name() {
         return first_name;
     }
@@ -141,4 +145,7 @@ public class PersonalInfo implements Serializable {
         this.id_proof_type = id_proof_type;
     }
 
+   
+
+    
 }

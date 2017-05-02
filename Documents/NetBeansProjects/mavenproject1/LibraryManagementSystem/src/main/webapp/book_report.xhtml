@@ -4,17 +4,30 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-     >
+      >
     <h:head>
         <title>Book Reports Updates</title>
     </h:head>
     <h:body>
         <ui:composition template="/resources/template/login_template.xhtml">
             <ui:define name="content">`
-                <b:row>
-                    <br />
-                </b:row>
-                
+
+
+                <b:dataTable value="#{book.getBookLists()}" var="ls" span="12" 
+                             page-length="10" pageLengthMenu="10,20,30"  scroll-x="false" select='true'
+                             >
+                    <b:dataTableColumn label="Id" value="#{ls.book_id}" />
+                    <b:dataTableColumn label="Title" value="#{ls.book_title}" />
+                    <b:dataTableColumn label="Description" value="#{ls.book_descrription}" />
+                    <b:dataTableColumn label="Quantity" value="#{ls.book_qunatity}" />
+                    <b:dataTableColumn label="Price" value="#{ls.book_price}" />
+                    <b:dataTableColumn label="ISBN" value="#{ls.book_isbn}" />
+                    <b:dataTableColumn label="Category" value="#{ls.category_name}" />
+                    <b:dataTableColumn label="Supplier" value="#{ls.supplier_name}" />
+                    <b:dataTableColumn label="Publisher" value="#{ls.publisher_name}" />
+                    <b:dataTableColumn label="Author" value="#{ls.author_name}" />
+                </b:dataTable> 
+
             </ui:define>
         </ui:composition>
     </h:body>

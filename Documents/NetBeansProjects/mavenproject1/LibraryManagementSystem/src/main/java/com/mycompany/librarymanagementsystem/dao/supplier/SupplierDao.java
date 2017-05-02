@@ -25,11 +25,7 @@ public class SupplierDao {
                 transaction.rollback();
             }
             e.printStackTrace();
-        } finally {
-            session.close();
-            session.flush();
         }
-
     }
 
     public List<Supplier> getSupplierList() {
@@ -101,7 +97,7 @@ public class SupplierDao {
 
             } else if ("fax".equals(option)) {
 
-                Query q = session.createQuery("UPDATE publisher SET fax = :fax WHERE id = :id");
+                Query q = session.createQuery("UPDATE supplier SET fax = :fax WHERE id = :id");
                 q.setParameter("fax", updated_value);
                 q.setParameter("id", id);
                 int r = q.executeUpdate();

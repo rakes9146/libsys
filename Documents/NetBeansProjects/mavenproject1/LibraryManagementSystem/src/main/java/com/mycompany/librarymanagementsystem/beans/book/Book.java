@@ -2,6 +2,7 @@ package com.mycompany.librarymanagementsystem.beans.book;
 
 import com.mycompany.librarymanagementsystem.beans.base.am.BaseAlertMesssage;
 import com.mycompany.librarymanagementsystem.dao.book.BookDao;
+import com.mycompany.librarymanagementsystem.dao.member.MemberDao;
 
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -13,13 +14,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-@Entity
 @ManagedBean
 @SessionScoped
+@Entity(name = "book")
 public class Book implements Serializable {
 
     @Id
@@ -34,6 +33,8 @@ public class Book implements Serializable {
     private String supplier_name;
     private String publisher_name;
     private String author_name;
+    private String new_value;
+    private String update_type;
 
     @Transient
     @ManagedProperty(value = "#{baseam}")
@@ -141,6 +142,22 @@ public class Book implements Serializable {
         clear();
     }
 
+    public String getNew_value() {
+        return new_value;
+    }
+
+    public void setNew_value(String new_value) {
+        this.new_value = new_value;
+    }
+
+    public String getUpdate_type() {
+        return update_type;
+    }
+
+    public void setUpdate_type(String update_type) {
+        this.update_type = update_type;
+    }
+
     public void clear() {
 
         this.setAuthor_name(null);
@@ -160,5 +177,32 @@ public class Book implements Serializable {
         BookDao bd = new BookDao();
         List<Book> bl = bd.getBookList();
         return bl;
+    }
+
+    public void updateDetails() {
+
+        BookDao bd = new BookDao();
+        bd.updateBooks(book_id, update_type, new_value);
+        this.bam.setVisibility("lg");
+        this.bam.setMessage(this.book_id + " Data Update Successfully");
+        this.setNew_value(null);
+        this.setUpdate_type(null);
+        this.setBook_id(0);
+    }
+
+    public void deleteBook() {
+
+        BookDao bd = new BookDao();
+        MemberDao md = new MemberDao();
+        if (bd.isExist(book_id)) {
+            bd.delete(book_id);
+            this.bam.setVisibility("lg");
+            this.bam.setMessage(this.book_id + " Deleted Successfully");
+            this.setBook_id(0);
+        } else {
+            this.bam.setVisibility("lg");
+            this.bam.setMessage(this.book_id + " Id Doesn't Exist");
+            this.setBook_id(0);
+        }
     }
 }

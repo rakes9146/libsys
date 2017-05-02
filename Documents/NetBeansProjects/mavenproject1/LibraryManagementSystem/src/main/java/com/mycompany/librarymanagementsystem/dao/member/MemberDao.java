@@ -80,4 +80,94 @@ public class MemberDao {
         }
         return flag;
     }
+
+    public boolean isExist(int id) {
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction t = null;
+        boolean flag = false;
+        try {
+            t = session.beginTransaction();
+
+            Query query = session.createQuery("SELECT count(*) FROM member WHERE member_id = :member_id");
+            query.setParameter("member_id", id);
+
+            Long result = (Long) query.uniqueResult();
+            t.commit();
+            System.out.println("Result is " + result);
+            if (result > 0) {
+                flag = true;
+            } else {
+                flag = false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+    
+    
+    public void update(String updated_value, int id, String option) {
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction t = null;
+        try {
+            t = session.beginTransaction();
+
+            if ("address".equals(option)) {
+
+                Query q = session.createQuery("UPDATE member SET address = :address WHERE id = :id");
+                q.setParameter("address", updated_value);
+                q.setParameter("id", id);
+                int r = q.executeUpdate();
+                System.out.println(r);
+
+            } else if ("mobno".equals(option)) {
+
+                Query q = session.createQuery("UPDATE member SET mobile_number = :phone WHERE id = :id");
+                q.setParameter("phone", updated_value);
+                q.setParameter("id", id);
+                int r = q.executeUpdate();
+                System.out.println(r);
+
+            } else if ("email".equals(option)) {
+
+                Query q = session.createQuery("UPDATE member SET email = :email WHERE id = :id");
+                q.setParameter("email", updated_value);
+                q.setParameter("id", id);
+                int r = q.executeUpdate();
+                System.out.println(r);
+
+            }
+            t.commit();
+
+        } catch (Exception e) {
+
+            if (t != null) {
+                t.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(int id) {
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction t = null;
+        try {
+            t = session.beginTransaction();
+            Query q = session.createQuery("DELETE FROM member WHERE id = :id");
+            q.setParameter("id", id);
+            int result = q.executeUpdate();
+            t.commit();
+            System.out.println("Result " + result);
+
+        } catch (Exception e) {
+
+            if (t != null) {
+                t.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
 }

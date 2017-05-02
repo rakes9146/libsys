@@ -22,9 +22,9 @@
                         <b:dropMenu value="Books">
                             <b:navCommandLink value="Add Book" outcome="addbook" />
                             <b:navCommandLink value="Reports" outcome="book_report" />
-                            <b:navCommandLink value="Update and Delete" href="#"/>
+                            <b:navCommandLink value="Update and Delete" outcome="update_book"/>
                             <b:navCommandLink value="Allocate" outcome="transaction" />
-                             <b:navCommandLink value="Deallocate" outcome="deallocate" />
+                            <b:navCommandLink value="Deallocate" outcome="deallocate" />
                         </b:dropMenu>
 
                         <b:dropMenu value="Category">
@@ -35,7 +35,8 @@
 
                         <b:dropMenu value="Member">
                             <b:navCommandLink value="Add Member" outcome="addmember" />
-                            <b:navCommandLink value="Reports and Update" outcome="member_report" />
+                            <b:navCommandLink value="Reports" outcome="member_report" />
+                            <b:navCommandLink value="Update and Delete" outcome="member_update" />
                         </b:dropMenu>
 
                         <b:dropMenu value="Publisher">
@@ -45,8 +46,9 @@
                         </b:dropMenu>
 
                         <b:dropMenu value="Staff">
-                            <b:navCommandLink value="Add Staff" outcome="addstaff" />
-                            <b:navCommandLink value="Reports and Update" outcome="staff_report" />
+                            <b:navCommandLink value="Add Staff" outcome="addStaff" />
+                            <b:navCommandLink value="Reports" outcome="staff_report" />
+                            <b:navCommandLink value="Update and Delete" outcome="update_staff" />
                         </b:dropMenu>
 
                         <b:dropMenu value="Supplier">
@@ -55,7 +57,7 @@
                             <b:navCommandLink value="Update and Delete" outcome="update_supplier" />
                         </b:dropMenu>
 
-                        <b:navCommandLink value="LogOut" />
+                        <b:navCommandLink value="LogOut" outcome="home"/>
                     </b:navbarLinks>
                 </b:navBar>
             </h:form>

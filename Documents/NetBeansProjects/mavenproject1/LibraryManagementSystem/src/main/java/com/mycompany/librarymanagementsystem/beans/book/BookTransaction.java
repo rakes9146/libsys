@@ -1,6 +1,7 @@
 package com.mycompany.librarymanagementsystem.beans.book;
 
 import com.mycompany.librarymanagementsystem.beans.base.am.BaseAlertMesssage;
+import com.mycompany.librarymanagementsystem.dao.book.BookDao;
 import com.mycompany.librarymanagementsystem.dao.book.BookTransactionDao;
 import com.mycompany.librarymanagementsystem.dao.member.MemberDao;
 import java.io.Serializable;
@@ -111,17 +112,18 @@ public class BookTransaction implements Serializable {
 
     public void add() {
         MemberDao md = new MemberDao();
+        BookDao bd = new BookDao();
         BookTransactionDao bdo = new BookTransactionDao();
-
-//        if (md.isAvailable(this.member_id)) {
-        bdo.addTransaction(this);
-        bam.setVisibility("lg");
-        bam.setMessage("Book Alloted Successfully");
-        clear();
-//        } else {
-//            bam.setVisibility("lg");
-//            bam.setMessage("Id Doesn't Exist");
-//        }
+        if (md.isExist(member_id) && bd.isExist(book_id)) {
+            bdo.addTransaction(this);
+            bam.setVisibility("lg");
+            bam.setMessage("Book Alloted Successfully");
+            clear();
+        } else {
+            bam.setVisibility("lg");
+            bam.setMessage("Please Check Book/Member Id");
+            clear();
+        }
 
     }
 

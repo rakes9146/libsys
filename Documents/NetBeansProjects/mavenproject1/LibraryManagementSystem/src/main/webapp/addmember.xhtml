@@ -5,163 +5,181 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>
-            <ui:insert name="title">MyFiles</ui:insert>
-        </title>
-    </h:head>
-    <h:body>
+        <h:head>
+            <title>
+                <ui:insert name="title">MyFiles</ui:insert>
+            </title>
+        </h:head>
+        <h:body>
 
-        <ui:composition template="/resources/template/login_template.xhtml">
-            <ui:define name="content">`
-                <link href="resources/css/my.css" rel="stylesheet" type="text/css"/>
-                <h:form>
-                    <div class="container_div1">
-                        <b:container>
+            <ui:composition template="/resources/template/login_template.xhtml">
+                <ui:define name="content">`
+                    <link href="resources/css/my.css" rel="stylesheet" type="text/css"/>
+                    <h:form>
+                        <div class="container_div1">
+                            <b:container>
 
-                            <h1>User Registration Here</h1>
+                                <h1>User Registration Here</h1>
 
-                            <b:panel title="Personal Details" look="primary" collapsible="false">
-                                <b:row>
-                                    <b:inputText label="First Name" render-label="true" id="fname" value="#{member.getpIfPersonalInfo().first_name}"
-                                                 maxlength="20" large-screen="one-third" required="true"
-                                                 required-message="Please Enter your name" ajax="true" 
-                                                 update="msg1" />
-                                    <b:message id="msg1" for="fname" span="4" />
-                                </b:row>
-                                <b:row>
-                                    <b:inputText label="Middle Name" render-label="true" id="mname" value="#{member.getpIfPersonalInfo().middle_name}"
-                                                 maxlength="20" large-screen="one-third" required="true"
-                                                 required-message="Please Enter Your Middle Name" ajax="true"
-                                                 update="msg2" />
-                                    <b:message id="msg2" for="mname" span="4" />
-                                </b:row>
+                                <b:panel title="Personal Details" look="primary" collapsible="false">
+                                    <b:row>
+                                        <b:inputText label="First Name" render-label="true" id="fname" value="#{member.getpIfPersonalInfo().first_name}"
+                                                     maxlength="20" large-screen="one-third" required="true"
+                                                     required-message="Please Enter your name" ajax="true" 
+                                                     update="msg1" />
+                                        <b:message id="msg1" for="fname" span="4" />
+                                    </b:row>
+                                    <b:row>
+                                        <b:inputText label="Middle Name" render-label="true" id="mname" value="#{member.getpIfPersonalInfo().middle_name}"
+                                                     maxlength="20" large-screen="one-third" required="true"
+                                                     required-message="Please Enter Your Middle Name" ajax="true"
+                                                     update="msg2" />
+                                        <b:message id="msg2" for="mname" span="4" />
+                                    </b:row>
 
-                                <b:row>
-                                    <b:inputText label="Last Name" render-label="true" id="sname" value="#{member.getpIfPersonalInfo().last_name}"
-                                                 maxlength="20" large-screen="one-third" required="true" 
-                                                 required-message="Please Enter Your Last Name" ajax="true"
-                                                 update="msg3" />
-                                    <b:message id="msg3" for="sname" span="4" />
-                                </b:row>
-                                <b:row style="padding-left: 15px;">
-                                    <p style="font-weight: 25">Gender</p>
-                                    <b:row >
-                                        <div class="form-group">
-                                            <b:panelGrid size="xs" columns="3" large-screen="one-third">
-                                                <b:radiobutton itemLabel="Male" item-value="male" value="#{member.getpIfPersonalInfo().gender}" />
-                                                <b:radiobutton itemLabel="Female" item-value="female" value="#{member.getpIfPersonalInfo().gender}" />
-                                                <b:radiobutton   itemLabel="Transgender" item-value="transgender" value="#{member.getpIfPersonalInfo().gender}" />
-                                            </b:panelGrid>
+                                    <b:row>
+                                        <b:inputText label="Last Name" render-label="true" id="sname" value="#{member.getpIfPersonalInfo().last_name}"
+                                                     maxlength="20" large-screen="one-third" required="true" 
+                                                     required-message="Please Enter Your Last Name" ajax="true"
+                                                     update="msg3" />
+                                        <b:message id="msg3" for="sname" span="4" />
+                                    </b:row>
+                                    <b:row style="padding-left: 15px;">
+                                        <p style="font-weight: 25">Gender</p>
+                                        <b:row >
+                                            <div class="form-group">
+                                                <b:panelGrid size="xs" columns="3" large-screen="one-third">
+                                                    <b:radiobutton itemLabel="Male" item-value="male" value="#{member.getpIfPersonalInfo().gender}" />
+                                                    <b:radiobutton itemLabel="Female" item-value="female" value="#{member.getpIfPersonalInfo().gender}" />
+                                                    <b:radiobutton   itemLabel="Transgender" item-value="transgender" value="#{member.getpIfPersonalInfo().gender}" />
+                                                </b:panelGrid>
+                                            </div>
+                                        </b:row>
+                                    </b:row>
+                                    <b:row>
+                                        <div>
+                                            <b:dateTimePicker render-label="true" label="Date" id="dob" required="true" required-message="Please Enter your Date of Birth"
+                                                              large-screen="one-third" allow-input-toggle="true" update="msgd" ajax="true" value="#{member.getpIfPersonalInfo().dateOfBirth}"
+                                                              show-date="true" show-time="false" mode="plain" side-by-side="true" format="DD/MM/YYYY"
+                                                              toolbar-placement="top" tooltip-position="auto right" 
+                                                              >
+                                            </b:dateTimePicker>
+                                            <b:message id="msgd" for="dob" span="4" />
                                         </div>
                                     </b:row>
-                                </b:row>
+
+
+
+                                </b:panel>
                                 <b:row>
-                                    <div>
-                                        <b:dateTimePicker render-label="true" label="Date" id="dob" required="true" required-message="Please Enter your Date of Birth"
-                                                          large-screen="one-third" allow-input-toggle="true" update="msgd" ajax="true" value="#{member.getpIfPersonalInfo().dateOfBirth}"
-                                                          show-date="true" show-time="false" mode="plain" side-by-side="true" format="DD/MM/YYYY"
-                                                          toolbar-placement="top" tooltip-position="auto right" 
-                                                          >
-                                        </b:dateTimePicker>
-                                        <b:message id="msgd" for="dob" span="4" />
-                                    </div>
+
                                 </b:row>
+                                <b:panel title="Residential Details" look="primary" collapsible="false">
+                                    <b:row>
+                                        <b:inputTextarea label="Local Address" rows="5" maxlength="200" value="#{member.getpIfPersonalInfo().address}"
+                                                         large-screen="one-third" id="laddress" required="true"
+                                                         required-message="Please Enter Your Address" ajax="true"
+                                                         update="msg5" />
+                                        <b:message id="msg5" for="laddress" span="4"/>
+                                    </b:row>
+                                </b:panel>
 
+                                <b:panel title="Contact Detils" look="primary" collapsible="false">
+                                    <b:row>
+                                        <b:inputText type="text" label="Mobile Number" renderLabel="true" value="#{member.getpIfPersonalInfo().mobile_number}"
+                                                     maxlength="10" id="mobno" large-screen="one-third" required="true" validator-message="Invalid Input Please Enter Valid Input"
+                                                     required-message="Please Enter Your Mobile Number" ajax="true"
+                                                     update="msg21" >
+                                            <f:validateRegex pattern="^\d{10}$" for="mobno" />
+                                        </b:inputText>
+                                        <b:message id="msg21" for="mobno" span="4" />
+                                    </b:row>
 
+                                    <b:row>
+                                        <b:inputText type="email" label="Email" render-label="true" value="#{member.getpIfPersonalInfo().email}"
+                                                     maxlength="30" id="email" large-screen="one-third" required="true" validator-message="This is not Valid Email Format"
+                                                     required-message="Please Enter your Email Id" ajax="true"
+                                                     update="msg6" >
+                                            <f:validateRegex pattern="^(.+)@(.+)$"  for="email" />
+                                        </b:inputText>
+                                        <b:message id="msg6" for="email" span="4" />
+                                    </b:row>
+                                </b:panel>
 
-                            </b:panel>
-                            <b:row>
+                                <b:panel title="Security Question" look="primary" collapsible="false">
+                                    <b:row>
+                                        <b:selectOneMenu label="Quesion" render-label="true" required="true" large-screen="one-third" id="sq"
+                                                         required-message="Please Select Security Question" ajax="true" update="msg7"
+                                                         value="#{member.getpIfPersonalInfo().security_question}"
+                                                         >
+                                            <f:selectItem itemLabel="What is your birth place ?"></f:selectItem>
+                                            <f:selectItem itemLabel="What is your favourite player ?"></f:selectItem>
+                                            <f:selectItem itemLabel="What is your dream ?"></f:selectItem>
+                                            <f:selectItem itemLabel="What is your favourite pet ?"></f:selectItem>
+                                            <f:selectItem itemLabel="What is your first schoole ?"></f:selectItem>
+                                            <f:selectItem itemLabel="What is your favourite subject in high school ?"></f:selectItem>
+                                            <f:selectItem itemLabel="What is your writer ?"></f:selectItem>
+                                            <f:selectItem itemLabel="What is your favourite tree ?"></f:selectItem>
+                                        </b:selectOneMenu>
+                                        <b:message id="msg7" for="sq" span="4" />
+                                    </b:row>
 
-                            </b:row>
-                            <b:panel title="Residential Details" look="primary" collapsible="false">
+                                    <b:row>
+                                        <b:inputText label="Answer" renderLabel="true" required="true" large-screen="one-third"
+                                                     required-message="Please Enter Answer" ajax="true" update="msg8" maxlength="30"
+                                                     id="sa" value="#{member.getpIfPersonalInfo().secutiyt_answer}"
+                                                     />
+
+                                        <b:message id="msg8" for="sa" span="4" />
+                                    </b:row>
+                                </b:panel>  
+
+                                <b:panel title="Identification Proof" look="primary" collapsible="false">
+                                    <b:row>
+                                        <b:selectOneMenu label="Select Id Proof Type" render-label="true" required="true"  large-screen="one-third"
+                                                         id="sipt" update="msui" ajax="true" required-message="Please Select Id"  value="#{member.getpIfPersonalInfo().id_proof_type}"
+                                                         >
+                                            <f:selectItem itemValue="pan_card" itemLabel="PAN CARD" />
+                                            <f:selectItem itemValue="voter_card" itemLabel="VOTER CARD" />
+                                            <f:selectItem  itemValue="aadhar_card" itemLabel="AADHAR CARD" />
+                                        </b:selectOneMenu>
+                                        <b:message for="sipt" id="msui" span="4" />
+                                    </b:row>
+                                    <b:row>
+                                        <b:inputText label="Enter Id Number" render-label="true" ajax="true" value="#{member.getpIfPersonalInfo().id_proof_number}"
+                                                     id='ein' update="eids" large-screen="one-third" maxlength="10" required="true" required-message="Please Enter Id number"
+                                                     />
+                                        <b:message for="ein" id="eids" span="4" />
+                                    </b:row>  
+
+                                </b:panel>
                                 <b:row>
-                                    <b:inputTextarea label="Local Address" rows="5" maxlength="200" value="#{member.getpIfPersonalInfo().address}"
-                                                     large-screen="one-third" id="laddress" required="true"
-                                                     required-message="Please Enter Your Address" ajax="true"
-                                                     update="msg5" />
-                                    <b:message id="msg5" for="laddress" span="4"/>
-                                </b:row>
-                            </b:panel>
-
-                            <b:panel title="Contact Detils" look="primary" collapsible="false">
-                                <b:row>
-                                    <b:inputText type="text" label="Mobile Number" renderLabel="true" value="#{member.getpIfPersonalInfo().mobile_number}"
-                                                 maxlength="10" id="mobno" large-screen="one-third" required="true" validator-message="Invalid Input Please Enter Valid Input"
-                                                 required-message="Please Enter Your Mobile Number" ajax="true"
-                                                 update="msg21" >
-                                        <f:validateRegex pattern="^\d{10}$" for="mobno" />
-                                    </b:inputText>
-                                    <b:message id="msg21" for="mobno" span="4" />
+                                    <b:commandButton type="submit" value="Register" class="btn1" onclick="ajax:member.add()"
+                                                     span="1" size="nm" process="@form" update="@form" />
+                                    <b:commandButton type="reset" value="Reset" class="btn2" span="1" size="nm"
+                                                     />
                                 </b:row>
 
                                 <b:row>
-                                    <b:inputText type="email" label="Email" render-label="true" value="#{member.getpIfPersonalInfo().email}"
-                                                 maxlength="30" id="email" large-screen="one-third" required="true" validator-message="This is not Valid Email Format"
-                                                 required-message="Please Enter your Email Id" ajax="true"
-                                                 update="msg6" >
-                                        <f:validateRegex pattern="^(.+)@(.+)$"  for="email" />
-                                    </b:inputText>
-                                    <b:message id="msg6" for="email" span="4" />
+                                    <br />
                                 </b:row>
-                            </b:panel>
-
-                            <b:panel title="Security Question" look="primary" collapsible="false">
-                                <b:row>
-                                    <b:selectOneMenu label="Quesion" render-label="true" required="true" large-screen="one-third" id="sq"
-                                                     required-message="Please Select Security Question" ajax="true" update="msg7"
-                                                     value="#{member.getpIfPersonalInfo().security_question}"
-                                                     >
-                                        <f:selectItem itemLabel="What is your birth place ?"></f:selectItem>
-                                        <f:selectItem itemLabel="What is your favourite player ?"></f:selectItem>
-                                        <f:selectItem itemLabel="What is your dream ?"></f:selectItem>
-                                        <f:selectItem itemLabel="What is your favourite pet ?"></f:selectItem>
-                                        <f:selectItem itemLabel="What is your first schoole ?"></f:selectItem>
-                                        <f:selectItem itemLabel="What is your favourite subject in high school ?"></f:selectItem>
-                                        <f:selectItem itemLabel="What is your writer ?"></f:selectItem>
-                                        <f:selectItem itemLabel="What is your favourite tree ?"></f:selectItem>
-                                    </b:selectOneMenu>
-                                    <b:message id="msg7" for="sq" span="4" />
-                                </b:row>
-
-
 
                                 <b:row>
-                                    <b:inputText label="Answer" renderLabel="true" required="true" large-screen="one-third"
-                                                 required-message="Please Enter Answer" ajax="true" update="msg8" maxlength="30"
-                                                 id="sa" value="#{member.getpIfPersonalInfo().secutiyt_answer}"
-                                                 />
+                                    <b:alert severity="success" id="ak" visible="#{member.bam.visibility}">
+                                        <h:outputText id="ot" value="#{member.bam.message}"></h:outputText>
+                                    </b:alert>
+                                </b:row>`
 
-                                    <b:message id="msg8" for="sa" span="4" />
-                                </b:row>
-                            </b:panel>  
-                            <b:row>
-                                <b:commandButton type="submit" value="Register" class="btn1" onclick="ajax:member.add()"
-                                                 span="1" size="nm" process="@form" update="@form" />
-                                <b:commandButton type="reset" value="Reset" class="btn2" span="1" size="nm"
-                                                 />
-                            </b:row>
+                            </b:container>
+                        </div>
 
-                            <b:row>
-                                <br />
-                            </b:row>
+                    </h:form>
+                </ui:define>
+            </ui:composition>
 
-                            <b:row>
-                                <b:alert severity="success" id="ak" visible="#{member.bam.visibility}">
-                                    <h:outputText id="ot" value="#{member.bam.message}"></h:outputText>
-                                </b:alert>
-                            </b:row>`
-
-                        </b:container>
-                    </div>
-
-                </h:form>
-            </ui:define>
-        </ui:composition>
-
-        <ui:remove>
-            <h:outputText value="hello from facelets"></h:outputText>
-        </ui:remove>
-    </h:body>
-</html>
+            <ui:remove>
+                <h:outputText value="hello from facelets"></h:outputText>
+            </ui:remove>
+        </h:body>
+    </html>
 

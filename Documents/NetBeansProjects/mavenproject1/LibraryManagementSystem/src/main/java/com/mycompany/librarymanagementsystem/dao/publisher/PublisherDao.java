@@ -27,9 +27,6 @@ public class PublisherDao {
 
                 transaction.rollback();
             }
-        }finally{
-         session.close();
-         session.flush();
         }
 
     }
@@ -133,6 +130,10 @@ public class PublisherDao {
             t.commit();
             System.out.println("Result "+result);
 
+            
+            
+            
+            
         } catch (Exception e) {
 
             if (t != null) {

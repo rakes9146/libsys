@@ -10,13 +10,16 @@
     </h:head>
     <h:body>
 
-
+    <b:row>
         <ui:include src="staff_login.xhtml" rendered="#{facesContext.externalContext.isUserInRole('admin')}" />
-        <ui:include src="member_login.xhtml" rendered="#{facesContext.externalContext.isUserInRole('student')}" />
+       
+    </b:row>
+        
         <b:container>
-            <b:row>
-                <b:alert severity="danger" span="4">Invalid User Name / Password /Type</b:alert>
-            </b:row>
+        <b:row>
+       <br />
+        <b:alert severity="danger" span="4" offset-xs="-1">Invalid User Name / Password /Type</b:alert>
+       </b:row>
         </b:container>
     </h:body>
 </html>

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+
+
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -15,10 +18,10 @@
         <mapping class="com.mycompany.librarymanagementsystem.beans.category.Category"></mapping>
         <mapping class="com.mycompany.librarymanagementsystem.beans.publisher.Publisher"></mapping>
         <mapping class="com.mycompany.librarymanagementsystem.beans.member.Member"></mapping>
-        <mapping class="com.mycompany.librarymanagementsystem.beans.staff.Staff"></mapping>
+        <mapping class="com.mycompany.librarymanagementsystem.beans.staff.addstaff"></mapping>
       
-           <mapping class="com.mycompany.librarymanagementsystem.beans.book.Book"></mapping>
-           <mapping class="com.mycompany.librarymanagementsystem.beans.book.BookTransaction"></mapping>  
+        <mapping class="com.mycompany.librarymanagementsystem.beans.book.Book"></mapping>
+        <mapping class="com.mycompany.librarymanagementsystem.beans.book.BookTransaction"></mapping>  
     </session-factory>
   
   

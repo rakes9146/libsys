@@ -99,6 +99,12 @@
                                 <b:message id="msg8" for="description" span="4" />
                             </b:row>
 
+                            <b:row>
+                                <b:inputText id="quantity" label="Book Quantity" render-label="true" value="#{book.book_qunatity}"
+                                             required="true" required-message="Please Enter book Quantity" maxlength="4"
+                                             ajax="true" update="msg9" large-screen="one-third" />
+                                <b:message id="msg9" for="quantity" span="4" />
+                            </b:row>
 
                             <b:row>
                                 <b:commandButton type="submit" value="Submit" ajax="true" process="@form" update="@form" 
